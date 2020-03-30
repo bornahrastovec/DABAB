@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 namespace DABAB.Controllers
 {
+
+    //bla bla
     public class HomeController : Controller
     {
         public ActionResult Index()
