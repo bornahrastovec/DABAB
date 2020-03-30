@@ -8,6 +8,13 @@ namespace DABAB.Controllers
 {
     public class HomeController : Controller
     {
+
+        /// <summary>
+        /// Index metoda
+        /// </summary>
+        /// <returns></returns>
+        /// 
+
         public ActionResult Index()
         {
             return View();
