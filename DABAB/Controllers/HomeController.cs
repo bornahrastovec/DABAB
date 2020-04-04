@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DABAB.Models;
+using DABAB.Models.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,14 @@ namespace DABAB.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly BazaDbContext context = new BazaDbContext();
+        private readonly QueryHelper queryHelper = new QueryHelper();
+
         public ActionResult Index()
         {
-            return View();
+
+
+            return View(context.Filmovi.ToList());
         }
 
         public ActionResult About()

@@ -21,7 +21,7 @@ namespace DABAB.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("BazaDbContext", throwIfV1Schema: false)
         {
         }
 
