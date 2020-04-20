@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using DABAB.Models
+
+@model Zanr
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -33,6 +37,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Recenzije</a>
                     </li>
+                    <li>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Žanrovi</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Triler</a>
+                            <a class="dropdown-item" href="#">Akcija</a>
+                            <a class="dropdown-item" href="#">Drama</a>
+                            <a class="dropdown-item" href="#">Komedija</a>
+                            <a class="dropdown-item" href="#">Horor</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Glumci</a> 
+                    </li>
                 </ul>
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Administrator</a>
@@ -50,6 +68,7 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - PAUP Projekt</p>
+            <p>@Html.ActionLink("O Projektu","","")</p>
         </footer>
     </div>
 
