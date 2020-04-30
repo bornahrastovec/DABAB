@@ -22,7 +22,7 @@ namespace DABAB.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("BazaDbContext", throwIfV1Schema: false)
+            : base("DABABContext", throwIfV1Schema: false)
         {
         }
 

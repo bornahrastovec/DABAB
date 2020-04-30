@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DABAB.Models;
-using DABAB.Models.Helpers;
+using DABAB.DAL;
 using System.Web.Mvc;
 
 namespace DABAB.Controllers
@@ -12,12 +12,33 @@ namespace DABAB.Controllers
     public class HomeController : Controller
     {
 
-        private readonly BazaDbContext context = new BazaDbContext();
-        private readonly QueryHelper repository = new QueryHelper();
+        private IDABABRepository repository;
+        private DABABContext context;
+        public HomeController(IDABABRepository repository, DABABContext context)
+        {
+            this.repository = repository;
+            this.context = context;
+        }
+        public HomeController()
+        {
 
+            this.repository = new DABABRepository(new DABABContext());
+        }
         public ActionResult Index()
         {
-            return View();
+
+            var movies = repository.GetMovies();
+
+            var movie = repository.GetMovieById(1);
+
+            var movieActor = repository.GetActorsByMovieId(movie.MovieId).FirstOrDefault();
+
+
+
+            ViewBag.MovieActor = movieActor.Name + movieActor.Surname;
+
+            return View(movies.ToList());
+            
         }
 
         public ActionResult About()

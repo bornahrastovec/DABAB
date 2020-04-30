@@ -7,18 +7,18 @@ namespace DABAB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class Migration1 : IMigrationMetadata
+    public sealed partial class DABABMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Migration1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DABABMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003311648548_Migration1"; }
+            get { return "202004301718125_DABABMigration"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

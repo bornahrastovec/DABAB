@@ -7,21 +7,21 @@ using System.Web;
 
 namespace DABAB.Models
 {
-    public enum Zanrovi
+    public enum Genres
     {
-        Triler = 1,
-        Akcijski = 2,
+        Thriller = 1,
+        Action = 2,
         Drama = 3,
-        Komedija = 4,
-        Horor = 5
+        Comedy = 4,
+        Horror = 5
 
     }
 
-    [Table("zanr")]
-    public class Zanr
+    [Table("Genre")]
+    public class Genre
     {
         [Key]
-        public int ZanrId { get; set; }
-        public Zanrovi Vrsta { get; set; }
+        public int GenreId { get; set; }
+        public Genres Type { get; set; }
     }
 }

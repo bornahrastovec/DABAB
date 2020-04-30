@@ -1,9 +1,16 @@
-﻿@model IEnumerable<DABAB.Models.Film>
+﻿@model IEnumerable<DABAB.Models.Movie>
 
 @{
     ViewBag.Title = "Home Page";
 }
-
+@foreach (var item in Model)
+{
+    <h1>@item.Title</h1>
+    <h1>@item.Description</h1>
+    <h1>@item.ReleaseDate</h1>
+    <h1>@item.Rating</h1>
+    <h1>Actor: @ViewBag.MovieActor</h1>
+}
 
 <body>
     <div id="mdb-preloader" class="flex-center">
@@ -26,7 +33,7 @@
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        <h4 class="card-title">Card title</h4>
+                        <h4 class="card-title"></h4>
                         <!-- Text -->
                         <p class="card-text">
                             Some quick example text to build on the card title and make up the bulk of the card's
