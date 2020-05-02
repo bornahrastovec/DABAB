@@ -9,11 +9,11 @@ namespace DABAB.Models
 {
     public enum Rating
     {
-        JednaZvjezdica = 1,
-        DvijeZvjezdice = 2,
-        TriZvjezdice = 3,
-        CetiriZvjezdice = 4,
-        PetZvjezdica = 5
+        OneStar = 1,
+        TwoStars = 2,
+        ThreeStars = 3,
+        FourStars = 4,
+        FiveStars = 5
 
     }
 
@@ -27,8 +27,8 @@ namespace DABAB.Models
         public string Description { get; set; }
         public Rating Rating { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public ICollection<Actor> Actors { get; set; }
-        public ICollection<Genre> Genres { get; set; }
+        public virtual ICollection<MovieActor> MovieActors { get; set; }
+        public virtual ICollection<MovieGenre> MovieGenres { get; set; }
 
     }
 }

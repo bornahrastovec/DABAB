@@ -27,18 +27,7 @@ namespace DABAB.Controllers
         public ActionResult Index()
         {
 
-            var movies = repository.GetMovies();
-
-            var movie = repository.GetMovieById(1);
-
-            var movieActor = repository.GetActorsByMovieId(movie.MovieId).FirstOrDefault();
-
-
-
-            ViewBag.MovieActor = movieActor.Name + movieActor.Surname;
-
-            return View(movies.ToList());
-            
+            return View();
         }
 
         public ActionResult About()

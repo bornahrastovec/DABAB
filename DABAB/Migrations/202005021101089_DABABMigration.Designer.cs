@@ -13,7 +13,7 @@ namespace DABAB.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202004301718125_DABABMigration"; }
+            get { return "202005021101089_DABABMigration"; }
         }
         
         string IMigrationMetadata.Source

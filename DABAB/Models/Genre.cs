@@ -23,5 +23,6 @@ namespace DABAB.Models
         [Key]
         public int GenreId { get; set; }
         public Genres Type { get; set; }
+        public virtual ICollection<MovieGenre> GenreMovies { get; set; }
     }
 }

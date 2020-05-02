@@ -11,12 +11,14 @@ namespace DABAB.Models
     public class MovieGenre
     {
         [Key]
-        public int Id { get; set; }
-
+        [Column(Order = 1)]
         public int MovieId { get; set; }
         public Movie Movie { get; set; }
-        
-        public Genre Genre { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
         public int GenreId { get; set; }
+
+        public Genre Genre { get; set; }
     }
 }

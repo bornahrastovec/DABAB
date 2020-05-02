@@ -199,17 +199,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MovieActorController.cs" />
+    <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="DAL\DABABContext.cs" />
     <Compile Include="DAL\DABABRepository.cs" />
     <Compile Include="DAL\IDABABRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004301718125_DABABMigration.cs" />
-    <Compile Include="Migrations\202004301718125_DABABMigration.designer.cs">
-      <DependentUpon>202004301718125_DABABMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202005021101089_DABABMigration.cs" />
+    <Compile Include="Migrations\202005021101089_DABABMigration.designer.cs">
+      <DependentUpon>202005021101089_DABABMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -382,6 +385,21 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Movie\Create.cshtml" />
+    <Content Include="Views\Movie\Delete.cshtml" />
+    <Content Include="Views\Movie\Details.cshtml" />
+    <Content Include="Views\Movie\Edit.cshtml" />
+    <Content Include="Views\Movie\Index.cshtml" />
+    <Content Include="Views\Actor\Create.cshtml" />
+    <Content Include="Views\Actor\Delete.cshtml" />
+    <Content Include="Views\Actor\Details.cshtml" />
+    <Content Include="Views\Actor\Edit.cshtml" />
+    <Content Include="Views\Actor\Index.cshtml" />
+    <Content Include="Views\MovieActor\Create.cshtml" />
+    <Content Include="Views\MovieActor\Delete.cshtml" />
+    <Content Include="Views\MovieActor\Details.cshtml" />
+    <Content Include="Views\MovieActor\Edit.cshtml" />
+    <Content Include="Views\MovieActor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -400,8 +418,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004301718125_DABABMigration.resx">
-      <DependentUpon>202004301718125_DABABMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005021101089_DABABMigration.resx">
+      <DependentUpon>202005021101089_DABABMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
