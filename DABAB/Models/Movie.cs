@@ -27,6 +27,7 @@ namespace DABAB.Models
         public string Description { get; set; }
         public Rating Rating { get; set; }
         public DateTime ReleaseDate { get; set; }
+        public string ImagePath { get; set; }
         public virtual ICollection<MovieActor> MovieActors { get; set; }
         public virtual ICollection<MovieGenre> MovieGenres { get; set; }
 
