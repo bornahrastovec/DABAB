@@ -28,8 +28,8 @@ namespace DABAB.Models
         public Rating Rating { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string ImagePath { get; set; }
-        public virtual ICollection<MovieActor> MovieActors { get; set; }
-        public virtual ICollection<MovieGenre> MovieGenres { get; set; }
+        public virtual ICollection<MovieActor> Actors { get; set; }
+        public virtual ICollection<MovieGenre> Genres { get; set; }
 
     }
 }
