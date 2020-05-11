@@ -237,6 +237,26 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\28DaysLater.jpg" />
+    <Content Include="Content\images\6underground.jpg" />
+    <Content Include="Content\images\Apollo13.jpg" />
+    <Content Include="Content\images\Baywatch.jpg" />
+    <Content Include="Content\images\BeautifulCreatures.jpg" />
+    <Content Include="Content\images\Casablanca.jpg" />
+    <Content Include="Content\images\Gigli.jpg" />
+    <Content Include="Content\images\Hababam.jpg" />
+    <Content Include="Content\images\ILY.jpg" />
+    <Content Include="Content\images\It.jpg" />
+    <Content Include="Content\images\KOD.jpg" />
+    <Content Include="Content\images\Mulan.jpg" />
+    <Content Include="Content\images\Onward.jpg" />
+    <Content Include="Content\images\StarWars.jpg" />
+    <Content Include="Content\images\TerminatorDarkFate.jpg" />
+    <Content Include="Content\images\TheBeatles.jpg" />
+    <Content Include="Content\images\TheNotebook.jpg" />
+    <Content Include="Content\images\Wheely.jpg" />
+    <Content Include="Content\images\XMen.png" />
+    <Content Include="Content\images\Zeitgeist.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -407,7 +427,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
