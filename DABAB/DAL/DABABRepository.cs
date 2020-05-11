@@ -49,7 +49,7 @@ namespace DABAB.DAL
         {
             try
             {
-                return context.MovieActors.Where(it => it.MovieId == id).Select(it=> it.Actor);
+                return context.MovieActors.Where(it => it.MovieId == id).Select(it => it.Actor);
             }
             catch
             {

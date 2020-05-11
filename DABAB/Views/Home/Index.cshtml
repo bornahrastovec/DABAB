@@ -3,14 +3,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-@foreach (var item in Model)
-{
-    <h1>@item.Title</h1>
-    <h1>@item.Description</h1>
-    <h1>@item.ReleaseDate</h1>
-    <h1>@item.Rating</h1>
-    <h1>Actor: @ViewBag.MovieActor</h1>
-}
+<link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 
 <body>
     <div id="mdb-preloader" class="flex-center">
@@ -20,79 +13,33 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm">
-                <div class="card">
-                    <!-- Card image -->
-                    <div class="view overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
-                             alt="Card image cap">
-                        <a href="#!">
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-                    <!-- Card content -->
-                    <div class="card-body">
-                        <!-- Title -->
-                        <h4 class="card-title"></h4>
-                        <!-- Text -->
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up the bulk of the card's
-                            content.
-                        </p>
-                        <!-- Button -->
-                        <a href="#" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="card">
-                    <!-- Card image -->
-                    <div class="view overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
-                             alt="Card image cap">
-                        <a href="#!">
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-                    <!-- Card content -->
-                    <div class="card-body">
-                        <!-- Title -->
-                        <h4 class="card-title">Card title</h4>
-                        <!-- Text -->
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up the bulk of the card's
-                            content.
-                        </p>
-                        <!-- Button -->
-                        <a href="#" class="btn btn-primary">Button</a>
+            @foreach (var item in Model)
+            {
+                <div class="col-sm">
+                    <div class="card" >
+                        <!-- Card image -->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="@item.ImagePath" style="width: 250px; height: 250px;"
+                                 alt="@item.Title">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!-- Card content -->
+                        <div class="card-body">
+                            <!-- Title -->
+                            <h4 class="card-title">@item.Title</h4>
+                            <!-- Text -->
+                            <p class="card-text" style="max-height:50ch; -webkit-line-clamp: 5;">
+                                @item.Description
+                            </p>
+                            <!-- Button -->
+                            <a href="#" class="btn btn-primary">Detalji</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm">
-                <div class="card">
-                    <!-- Card image -->
-                    <div class="view overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
-                             alt="Card image cap">
-                        <a href="#!">
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-                    <!-- Card content -->
-                    <div class="card-body">
-                        <!-- Title -->
-                        <h4 class="card-title">Card title</h4>
-                        <!-- Text -->
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up the bulk of the card's
-                            content.
-                        </p>
-                        <!-- Button -->
-                        <a href="#" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+            }
     </div>
 
     <!-- Card -->

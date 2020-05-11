@@ -37,4 +37,13 @@ h1, p {
 hr {
     border-color:white !important;
 }
+.card {
+    color: black;
+    max-height: 100ch;
+    -webkit-line-clamp: 5
+}
 
+.card-text {
+    color: black;
+    -webkit-line-clamp: 5
+}
