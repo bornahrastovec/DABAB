@@ -11,13 +11,12 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="text-align: center">
         <div class="row">
             @foreach (var item in Model)
             {
                 <div class="col-sm">
-                    <div class="card" >
-                        <!-- Card image -->
+                    <div class="card" style="width: 250px; height: 450px; text-align: center; margin-top: 50px;" >
                         <div class="view overlay">
                             <img class="card-img-top" src="@item.ImagePath" style="width: 250px; height: 250px;"
                                  alt="@item.Title">
@@ -25,25 +24,16 @@
                                 <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
-                        <!-- Card content -->
                         <div class="card-body">
-                            <!-- Title -->
                             <h4 class="card-title">@item.Title</h4>
-                            <!-- Text -->
                             <p class="card-text" style="max-height:50ch; -webkit-line-clamp: 5;">
-                                @item.Description
                             </p>
-                            <!-- Button -->
                             <a href="#" class="btn btn-primary">Detalji</a>
                         </div>
                     </div>
                 </div>
 
             }
+        </div>
     </div>
-
-    <!-- Card -->
-    <!-- Card -->
-
-
 </body>
