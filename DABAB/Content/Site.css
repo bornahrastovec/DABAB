@@ -47,3 +47,7 @@ hr {
     color: black;
     -webkit-line-clamp: 5
 }
+
+.table {
+    color:white;
+}

@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
+
 <h2>Index</h2>
 
 <p>
@@ -24,23 +26,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Surname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateofBirth)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ActorId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ActorId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ActorId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofBirth)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ActorId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ActorId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ActorId })
+            </td>
+        </tr>
+    }
 
 </table>
