@@ -43,5 +43,25 @@ namespace DABAB.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        
+        public virtual JsonResult GetMovieDetailsModal(int MovieId)
+        {
+
+            var movie = repository.GetMovieById(MovieId);
+
+            return Json(new
+            {
+                movieTitle = movie.Title,
+                movieDescription = movie.Description,
+                movieReleaseDate = movie.ReleaseDate,
+                movieActors = movie.Actors,
+                movieRating = movie.Rating,
+                movieGenres = movie.Genres
+
+
+            }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

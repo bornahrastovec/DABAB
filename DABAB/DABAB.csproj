@@ -257,6 +257,8 @@
     <Content Include="Content\images\Wheely.jpg" />
     <Content Include="Content\images\XMen.png" />
     <Content Include="Content\images\Zeitgeist.jpg" />
+    <Content Include="Content\js\MovieDetails.js" />
+    <Content Include="Content\LoginRegister.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
