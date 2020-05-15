@@ -12,12 +12,15 @@ using DABAB.Models;
 
 namespace DABAB.Controllers
 {
+    //test pushanja
+
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private int a = 1;
+        
         public AccountController()
         {
         }
