@@ -28,9 +28,7 @@
                             <h4 class="card-title">@item.Title</h4>
                             <p class="card-text" style="max-height:50ch; -webkit-line-clamp: 5;">
                             </p>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
-                                Detalji
-                            </button>
+                            @Html.ActionLink("Detalji", "Details","Movie", new { id = item.MovieId }, new { @class = "btn btn-info btn-sm" })
                         </div>
                     </div>
                 </div>
