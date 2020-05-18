@@ -3,44 +3,56 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
 <link rel="stylesheet" type="text/css" href="~/Content/LoginRegister.css" />
 
-<button type="button" class="btn btn-primary">
-    @Html.ActionLink("+", "Create", "Movie", new { @class = "text-white" })
-</button>
+<h2>Filmovi</h2>
+<table class="table">
+    <tr>
+        <th>
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Create New", "Create", "", new { @class = "text-white" })
+            </button>
+        </th>
+        <th>
+            <button type="button" class="btn btn-primary">
+                <a style="color:white;" href="@Url.Action("Index","Actor")">Glumci</a>
+            </button>
+        </th>
+    </tr>
+</table>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th></th>
+    </tr>
 
-    <table class="table">
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
-            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MovieId })
+                </button>
+                <button type="button" class="btn btn-primary">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MovieId })
+                </button>
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReleaseDate)
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary ">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.MovieId })
-                    </button>
-                    <p></p>
-                    <button type="button" class="btn btn-primary">
-                        @Html.ActionLink("Delete", "Delete", new { id = item.MovieId })
-                    </button>
-                </td>
-            </tr>
-        }
-
-    </table>
+</table>

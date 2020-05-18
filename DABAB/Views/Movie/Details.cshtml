@@ -2,14 +2,16 @@
 
 @{
     ViewBag.Title = "Detalji o filmu";
-    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+
 }
 
 <h2>@ViewBag.Title</h2>
 <link rel="stylesheet" href="~/Content/Site.css" type="text/css"/>
 
 <div>
-    
+
 
     <div class="row" style="color:white;">
         <div class="col-md-2">
@@ -19,7 +21,7 @@
             @Model.Title
         </div>
     </div>
-    <br/>
+    <br />
     <div class="row" style="color:white;">
         <div class="col-md-2">
             <strong>Rating: </strong>
@@ -28,7 +30,7 @@
             @Model.Rating
         </div>
     </div>
-    <br/>
+    <br />
     <div class="row" style="color:white;">
         <div class="col-md-2">
             <strong>Datum izdavanja: </strong>
@@ -37,7 +39,7 @@
             @Model.ReleaseDate
         </div>
     </div>
-    <br/>
+    <br />
     <div class="row" style="color:white;">
         <div class="col-md-2">
             <strong>Opis: </strong>

@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #1C2331 !important;
+    background-color: gray !important;
 }
 
 html, body {
@@ -11,7 +11,7 @@ html, body {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    background-color: #1C2331;
+    background-color: gray;
     margin-top: 50px;
     padding-left: 15px;
     padding-right: 15px;
@@ -54,7 +54,7 @@ hr {
 .text-white {
     color: white;
 }
-h4,p {
+p {
     color:white;
 }
 .bijelo{
