@@ -48,6 +48,15 @@ hr {
     -webkit-line-clamp: 5
 }
 
-.table {
+.table a{
     color:white;
+}
+.tablestyles{
+    color:white;
+}
+td, tr {
+    color: white;
+}
+a {
+    color: white;
 }

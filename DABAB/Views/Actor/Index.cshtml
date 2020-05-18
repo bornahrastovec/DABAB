@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
 
-<h2>Index</h2>
+<h2>Glumci</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -38,10 +38,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DateofBirth)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ActorId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ActorId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ActorId })
+            <td class="tablestyles">
+                @Html.ActionLink("Edit", "Edit", "Actor", new { id = item.ActorId }, new { @class = "btn btn-info btn-sm" }) |
+                @Html.ActionLink("Detalji", "Details", "Actor", new { id = item.ActorId }, new { @class = "btn btn-info btn-sm" })|
+                @Html.ActionLink("OBriši", "Delete", "Actor", new { id = item.ActorId }, new { @class = "btn btn-info btn-sm" })
             </td>
         </tr>
     }

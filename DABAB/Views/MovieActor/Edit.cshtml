@@ -4,6 +4,7 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 
 <h2>Edit</h2>
 
@@ -11,7 +12,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>MovieActor</h4>
         <hr />
@@ -32,6 +33,6 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
