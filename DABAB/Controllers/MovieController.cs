@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using DABAB.DAL;
 using DABAB.Models;
-using DABAB.Reports;
 
 namespace DABAB.Controllers
 {
@@ -18,6 +17,10 @@ namespace DABAB.Controllers
 
         // GET: Movie
         public ActionResult Index()
+        {
+            return View(db.Movies.ToList());
+        }
+        public ActionResult Korisnik()
         {
             return View(db.Movies.ToList());
         }
@@ -35,15 +38,6 @@ namespace DABAB.Controllers
                 return HttpNotFound();
             }
             return View(movie);
-        }
-
-        [AllowAnonymous]
-        public ActionResult moviesPDF()
-        {
-            var filmovi = db.Movies.ToList();
-            MoviesReport moviespdf = new MoviesReport();
-            moviespdf.generirajPdf(filmovi);
-            return File(moviespdf.Podatci, System.Net.Mime.MediaTypeNames.Application.Pdf, "PopisFilmova.pdf");
         }
 
         // GET: Movie/Create

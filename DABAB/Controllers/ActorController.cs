@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using DABAB.DAL;
 using DABAB.Models;
-using DABAB.Reports;
 
 namespace DABAB.Controllers
 {
@@ -18,6 +17,10 @@ namespace DABAB.Controllers
 
         // GET: Actor
         public ActionResult Index()
+        {
+            return View(db.Actors.ToList());
+        }
+        public ActionResult Korisnik()
         {
             return View(db.Actors.ToList());
         }
@@ -35,15 +38,6 @@ namespace DABAB.Controllers
                 return HttpNotFound();
             }
             return View(actor);
-        }
-
-        [AllowAnonymous]
-        public ActionResult ActorsPDF()
-        {
-            var glumci = db.Actors.ToList();
-            ActorsReport actorspdf = new ActorsReport();
-            actorspdf.generirajPdf(glumci);
-            return File(actorspdf.Podatci, System.Net.Mime.MediaTypeNames.Application.Pdf, "PopisGlumaca.pdf");
         }
 
         // GET: Actor/Create

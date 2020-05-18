@@ -7,50 +7,53 @@
 
 <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
 
-<h2>Glumci</h2>
+<h2>Admisnko sučelje za glumce</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.ActionLink("Create New", "Create","", new { @class = "text-white" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Surname)
+            <a style="color:white;" href="@Url.Action("Index","Movie")">Filmovi</a>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateofBirth)
-        </th>
-        <th></th>
     </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateofBirth)
-            </td>
-            <td class="tablestyles">
-                @Html.ActionLink("Edit", "Edit", "Actor", new { id = item.ActorId }, new { @class = "btn btn-info btn-sm" }) |
-                @Html.ActionLink("Detalji", "Details", "Actor", new { id = item.ActorId }, new { @class = "btn btn-info btn-sm" })|
-                @Html.ActionLink("OBriši", "Delete", "Actor", new { id = item.ActorId }, new { @class = "btn btn-info btn-sm" })
-            </td>
-        </tr>
-    }
-
 </table>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateofBirth)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    <a href="@Url.Action("ActorsPDF","Actor")" class="btn btn-primary">
-        Kreiraj PDF
-    </a>
-</p>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateofBirth)
+                </td>
+                <td>
+                    <button type="button">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ActorId })
+                    </button>
+                    <button type="button">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ActorId })
+                    </button>
+                </td>
+            </tr>
+        }
 
+    </table>

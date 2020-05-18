@@ -19,6 +19,7 @@ namespace DABAB.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private int a = 1;
         
         public AccountController()
         {

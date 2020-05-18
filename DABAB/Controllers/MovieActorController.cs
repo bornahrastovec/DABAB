@@ -13,35 +13,23 @@ namespace DABAB.Controllers
 {
     public class MovieActorController : Controller
     {
-        private IDABABRepository repository;
-        private DABABContext context;
-        public MovieActorController(IDABABRepository repository, DABABContext context)
-        {
-            this.repository = repository;
-            this.context = context;
-        }
-        public MovieActorController()
-        {
-
-            this.repository = new DABABRepository(new DABABContext());
-        }
+        private DABABContext db = new DABABContext();
 
         // GET: MovieActor
         public ActionResult Index()
         {
-            var movieActors = repository.GetAllMoviesAndActors();
+            var movieActors = db.MovieActors.Include(m => m.Actor).Include(m => m.Movie);
             return View(movieActors.ToList());
         }
 
         // GET: MovieActor/Details/5
         public ActionResult Details(int? id)
         {
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MovieActor movieActor = context.MovieActors.Find(id);
+            MovieActor movieActor = db.MovieActors.Find(id);
             if (movieActor == null)
             {
                 return HttpNotFound();
@@ -52,8 +40,8 @@ namespace DABAB.Controllers
         // GET: MovieActor/Create
         public ActionResult Create()
         {
-            ViewBag.ActorId = new SelectList(repository.GetAllActors(), "ActorId", "Name");
-            ViewBag.MovieId = new SelectList(repository.GetAllMovies(), "MovieId", "Title");
+            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "Name");
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title");
             return View();
         }
 
@@ -66,12 +54,13 @@ namespace DABAB.Controllers
         {
             if (ModelState.IsValid)
             {
-                repository.AddMovieActor(movieActor);
+                db.MovieActors.Add(movieActor);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ActorId = new SelectList(context.Actors, "ActorId", "Name", movieActor.ActorId);
-            ViewBag.MovieId = new SelectList(context.Movies, "MovieId", "Title", movieActor.MovieId);
+            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "Name", movieActor.ActorId);
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", movieActor.MovieId);
             return View(movieActor);
         }
 
@@ -82,13 +71,13 @@ namespace DABAB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MovieActor movieActor = context.MovieActors.Find(id);
+            MovieActor movieActor = db.MovieActors.Find(id);
             if (movieActor == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ActorId = new SelectList(context.Actors, "ActorId", "Name", movieActor.ActorId);
-            ViewBag.MovieId = new SelectList(context.Movies, "MovieId", "Title", movieActor.MovieId);
+            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "Name", movieActor.ActorId);
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", movieActor.MovieId);
             return View(movieActor);
         }
 
@@ -101,12 +90,12 @@ namespace DABAB.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Entry(movieActor).State = EntityState.Modified;
-                context.SaveChanges();
+                db.Entry(movieActor).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ActorId = new SelectList(context.Actors, "ActorId", "Name", movieActor.ActorId);
-            ViewBag.MovieId = new SelectList(context.Movies, "MovieId", "Title", movieActor.MovieId);
+            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "Name", movieActor.ActorId);
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", movieActor.MovieId);
             return View(movieActor);
         }
 
@@ -117,7 +106,7 @@ namespace DABAB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MovieActor movieActor = context.MovieActors.Find(id);
+            MovieActor movieActor = db.MovieActors.Find(id);
             if (movieActor == null)
             {
                 return HttpNotFound();
@@ -130,11 +119,19 @@ namespace DABAB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MovieActor movieActor = context.MovieActors.Find(id);
-            context.MovieActors.Remove(movieActor);
-            context.SaveChanges();
+            MovieActor movieActor = db.MovieActors.Find(id);
+            db.MovieActors.Remove(movieActor);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

@@ -5,8 +5,8 @@
 }
 
 html, body {
-   background-color: #1C2331;
-   color: white;
+    background-color: #1C2331;
+    color: white;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -31,7 +31,7 @@ textarea {
     max-width: 280px;
 }
 
-h1, p {
+h1,p {
     color: white;
 }
 hr {
@@ -48,15 +48,15 @@ hr {
     -webkit-line-clamp: 5
 }
 
-.table a{
+.table {
     color:white;
 }
-.tablestyles{
+.text-white {
+    color: white;
+}
+h4,p {
     color:white;
 }
-td, tr {
-    color: white;
-}
-a {
-    color: white;
+.bijelo{
+    color:white;
 }

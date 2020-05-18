@@ -1,7 +1,6 @@
 ﻿using DABAB.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -46,11 +45,11 @@ namespace DABAB.DAL
         {
             throw new NotImplementedException();
         }
-        public IEnumerable<Actor> GetActorsByMovieId(int id)
+        public IQueryable<Actor> GetActorsByMovieId(int id)
         {
             try
             {
-                return context.MovieActors.Where(it => it.MovieId == id).Select(it => it.Actor).ToList();
+                return context.MovieActors.Where(it => it.MovieId == id).Select(it => it.Actor);
             }
             catch
             {
@@ -58,17 +57,9 @@ namespace DABAB.DAL
                 throw Ex;
             }
         }
-        public IEnumerable<Actor> GetAllActors()
+        public IEnumerable<Actor> GetActors()
         {
-            try
-            {
-                return context.Actors.ToList();
-            }
-            catch
-            {
-                Exception ex = new Exception();
-                throw ex;
-            }
+            throw new NotImplementedException();
         }
 
         public Genre GetGenreById(int id)
@@ -76,7 +67,7 @@ namespace DABAB.DAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Genre> GetAllGenres()
+        public IEnumerable<Genre> GetGenres()
         {
             throw new NotImplementedException();
         }
@@ -94,7 +85,7 @@ namespace DABAB.DAL
             }
         }
 
-        public IEnumerable<Movie> GetAllMovies()
+        public IEnumerable<Movie> GetMovies()
         {
             try
             {
@@ -120,60 +111,6 @@ namespace DABAB.DAL
         public void UpdateMovie(Movie movie)
         {
             throw new NotImplementedException();
-        }
-        public void AssignActorsToMovie(MovieActor Actor)
-        {
-            if (Actor != null)
-            {
-                Movie movie = context.Movies.FirstOrDefault(it => it.MovieId == Actor.ActorId);
-                try
-                {
-                    movie.Actors.Add(Actor);
-                    context.SaveChanges();
-                }
-                catch
-                {
-                    Exception ex = new Exception();
-                    throw ex;
-                }
-            }
-        }
-
-        public IEnumerable<MovieActor> GetAllMoviesAndActors()
-        {
-            try
-            {
-
-                return context.MovieActors.Include(m => m.Movie).Include(m => m.Actor).ToList();
-
-            }
-            catch
-            {
-
-                Exception ex = new Exception();
-                throw ex;
-
-            }
-        }
-        public void AddMovieActor(MovieActor movieActor)
-        {
-            if (movieActor != null)
-            {
-                Movie movie = context.Movies.FirstOrDefault(it => it.MovieId == movieActor.ActorId);
-                try
-                {
-                    movie.Actors.Add(movieActor);
-                    context.MovieActors.Add(movieActor);
-                    context.SaveChanges();
-                }
-                catch
-                {
-                    Exception ex = new Exception();
-                    throw ex;
-                }
-            }
-
-
         }
     }
 }

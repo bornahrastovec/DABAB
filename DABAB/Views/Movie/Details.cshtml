@@ -2,35 +2,15 @@
 
 @{
     ViewBag.Title = "Detalji o filmu";
-
+    
 }
-<link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 
+<h2>@ViewBag.Title</h2>
 
+<div>
+    
 
-
-<div class="container" id="mainContainer">
-    <div class="row ">
-        <div class="col-md-6" style="text-align: center;">
-            <img src="~/@Model.ImagePath" style="width: 250px; height: 250px;" />
-        </div>
-        <div class="col-md-6" style="text-align: center;">
-            <h1>@Model.Title | @Model.ReleaseDate.Year.ToString()</h1>
-            <h4>Rating: @Model.Rating</h4>
-            @*<h5>
-                Glumci:
-                @foreach (var actor in Model.Actors)
-                {
-                    actor.Actor.Surname.ToString();
-                }
-                <p> Opis: @Model.Description</p>
-            </h5>*@
-            <h5>Opis: @Model.Description</h5>
-        </div>
-
-    </div>
-</div>
-@*<div class="row">
+    <div class="row" style="color:white;">
         <div class="col-md-2">
             <strong>Naziv filma: </strong>
         </div>
@@ -38,8 +18,8 @@
             @Model.Title
         </div>
     </div>
-    <br />
-    <div class="row">
+    <br/>
+    <div class="row" style="color:white;">
         <div class="col-md-2">
             <strong>Rating: </strong>
         </div>
@@ -47,27 +27,27 @@
             @Model.Rating
         </div>
     </div>
-    <br />
-    <div class="row">
+    <br/>
+    <div class="row" style="color:white;">
         <div class="col-md-2">
             <strong>Datum izdavanja: </strong>
         </div>
         <div class="col-md-10">
-            @Model.ReleaseDate.Year.ToString()
+            @Model.ReleaseDate
         </div>
     </div>
-    <br />
-    <div class="row">
+    <br/>
+    <div class="row" style="color:white;">
         <div class="col-md-2">
             <strong>Opis: </strong>
         </div>
         <div class="col-md-10">
             @Model.Description
         </div>
-    </div>*@
+    </div>
 
 
-<p style="text-align: center;">
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) |
+</div>
+<p>
     @Html.ActionLink("Back to List", "Index", "Home")
 </p>

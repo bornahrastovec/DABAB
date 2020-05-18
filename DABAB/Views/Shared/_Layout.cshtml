@@ -22,7 +22,7 @@
     <header>
 
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark unique-color scrolling-navbar">
-            <a class="navbar-brand" href="@Url.Action("Index","Home", null)"><strong>DABAB</strong></a>
+            <a class="navbar-brand" href="#"><strong>@Html.ActionLink("SSRR", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</strong></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,46 +30,55 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Movie", null)">Filmovi</a>
+                        <a class="nav-link" href="@Url.Action("Korisnik","Movie", null)">Filmovi</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Recenzije</a>
-                    </li>
-                    @*<li>
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">Žanrovi</a>
-                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Triler</a>
-                            <a class="dropdown-item" href="#">Akcija</a>
-                            <a class="dropdown-item" href="#">Drama</a>
-                            <a class="dropdown-item" href="#">Komedija</a>
-                            <a class="dropdown-item" href="#">Horor</a>
-                        </div>
-                    </li>*@
                     <li>
-                        <a class="nav-link" href="@Url.Action("Index","Actor", null)">Glumci</a> 
+                        <a class="nav-link" href="@Url.Action("","",null)">Recenzije</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="@Url.Action("Korisnik","Actor", null)">Glumci</a>
                     </li>
                 </ul>
-                @*<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Administrator</a>
-                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Kontrolna ploča</a>
-                    <a class="dropdown-item" href="#">Povijest pristupa</a>
-                    <a class="dropdown-item" href="#">Sample</a>*@
+                <div class="navbar navbar-inverse navbar-fixed-bottom  navbar-dark unique-color ">
+                    <div class="container">
+
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Administrator</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="@Url.Action("Index","Movie", null)">Kontrolna ploča</a>
+                            <a class="dropdown-item" href="#">Povijest pristupa</a>
+                            <a class="dropdown-item" href="#">Sample</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
-
     <div class="container body-content" style="background-color: #1C2331">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - PAUP Projekt</p>
-            <p>@Html.ActionLink("O Projektu","","")</p>
+            <p style="color:white;">&copy; @DateTime.Now.ToString("HH:mm:ss")- PAUP Projekt</p>
         </footer>
+        <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark unique-color scrolling-navbar">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a class="nav-link" href="@Url.Action("Contact","Home", null)">O projektu</a>
+                        </li>
+                        <li>
+                            @Html.Partial("_LoginPartial")
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+</nav>
     </div>
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
@@ -77,6 +86,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/js/mdb.min.js"></script>
+    @RenderSection("scripts", required: false)
     <!-- JQuery -->
+
+
 </body>
 </html>
