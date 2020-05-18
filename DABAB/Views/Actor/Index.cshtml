@@ -3,57 +3,62 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
 
-<h2>Admisnko sučelje za glumce</h2>
+<h2>Glumci</h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Create New", "Create","", new { @class = "text-white" })
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Create New", "Create", "", new { @class = "text-white" })
+            </button>
         </th>
         <th>
-            <a style="color:white;" href="@Url.Action("Index","Movie")">Filmovi</a>
+            <button type="button" class="btn btn-primary">
+                <a style="color:white;" href="@Url.Action("Index","Movie")">Filmovi</a>
+            </button>
         </th>
     </tr>
 </table>
-    <table class="table">
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofBirth)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateofBirth)
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofBirth)
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ActorId })
+                </button>
+                <button type="button" class="btn btn-primary">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ActorId })
+                </button>
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Surname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateofBirth)
-                </td>
-                <td>
-                    <button type="button">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ActorId })
-                    </button>
-                    <button type="button">
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ActorId })
-                    </button>
-                </td>
-            </tr>
-        }
-
-    </table>
+</table>

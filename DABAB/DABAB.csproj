@@ -470,8 +470,6 @@
     <Content Include="Views\MovieActor\Details.cshtml" />
     <Content Include="Views\MovieActor\Edit.cshtml" />
     <Content Include="Views\MovieActor\Index.cshtml" />
-    <Content Include="Views\Movie\Korisnik.cshtml" />
-    <Content Include="Views\Actor\Korisnik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

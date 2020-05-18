@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 }
 
 <h2>Edit</h2>
@@ -11,7 +12,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal" style="color:white;">
         <h4>Actor</h4>
         <hr />
