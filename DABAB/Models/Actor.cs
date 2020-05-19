@@ -12,8 +12,11 @@ namespace DABAB.Models
     {
         [Key]
         public int ActorId { get; set; }
+        [Display(Name = "Ime")]
         public string Name { get; set; }
+        [Display(Name = "Prezime")]
         public string Surname { get; set; }
+        [Display(Name = "Datum rođenja")]
         public DateTime DateofBirth { get; set; }
         public virtual ICollection<MovieActor> Movies { get; set; }
 
