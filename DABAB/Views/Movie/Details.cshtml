@@ -1,58 +1,38 @@
 ﻿@model DABAB.Models.Movie
 
 @{
-    ViewBag.Title = "Detalji o filmu";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+	ViewBag.Title = "Detalji o filmu";
+	
 
 }
 
 <h2>@ViewBag.Title</h2>
-<link rel="stylesheet" href="~/Content/Site.css" type="text/css"/>
+<br/>
+<link rel="stylesheet" href="~/Content/Site.css" type="text/css" />
 
-<div>
+<div class="container" id="mainContainer">
+	<div class="row ">
+		<div class="col-md-6" style="text-align: center;">
+			<img src="~/@Model.ImagePath" style="width: 400px; height: 400px;" />
+		</div>
+		<div class="col-md-6" style="text-align: center;">
+			<h1>@Model.Title | @Model.ReleaseDate.Year.ToString()</h1>
+			<h4>Rating: @Model.Rating</h4>
+			@*<h5>
+					Glumci:
+					@foreach (var actor in Model.Actors)
+					{
+						actor.Actor.Surname.ToString();
+					}
+					<p> Opis: @Model.Description</p>
+				</h5>*@
+			<h5>Opis: @Model.Description</h5>
+		</div>
 
-
-    <div class="row" style="color:white;">
-        <div class="col-md-2">
-            <strong>Naziv filma: </strong>
-        </div>
-        <div class="col-md-10">
-            @Model.Title
-        </div>
-    </div>
-    <br />
-    <div class="row" style="color:white;">
-        <div class="col-md-2">
-            <strong>Rating: </strong>
-        </div>
-        <div class="col-md-10">
-            @Model.Rating
-        </div>
-    </div>
-    <br />
-    <div class="row" style="color:white;">
-        <div class="col-md-2">
-            <strong>Datum izdavanja: </strong>
-        </div>
-        <div class="col-md-10">
-            @Model.ReleaseDate
-        </div>
-    </div>
-    <br />
-    <div class="row" style="color:white;">
-        <div class="col-md-2">
-            <strong>Opis: </strong>
-        </div>
-        <div class="col-md-10">
-            @Model.Description
-        </div>
-    </div>
-
-
+	</div>
 </div>
+<br/>
 <button type="button" class="btn btn-info btn-sm waves-effect waves-light">
-    <!--@Html.ActionLink("Back to List", "Index", "Home")-->
-    <a href="/Home/Index" class="text-white">Povratak na početnu</a>
+	<a href="/Home/Index" class="text-white">Povratak na početnu</a>
 </button>
 
