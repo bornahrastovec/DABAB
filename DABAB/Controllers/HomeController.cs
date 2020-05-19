@@ -27,7 +27,7 @@ namespace DABAB.Controllers
         public ActionResult Index()
         {
             var movie = repository.GetMovieById(2);
-            var movies = repository.GetMovies();
+            var movies = repository.GetAllMovies();
             return View(movies.ToList());
         }
 

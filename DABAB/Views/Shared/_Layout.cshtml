@@ -16,6 +16,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/css/mdb.min.css" rel="stylesheet">
+    <link href="~/Content/NavbarCustom.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -39,8 +40,8 @@
                         <a class="nav-link" href="@Url.Action("Index","Actor", null)">Glumci</a>
                     </li>
                 </ul>
-                <div class="navbar navbar-inverse navbar-fixed-bottom  navbar-dark" style="background-color:#C11515"> <!--#4C4C4C-->
-                    <div class="container">
+                <div class="navbar navbar-inverse navbar-fixed-bottom  navbar-dark" style="background-color:#C11515;" id="navbarDropdown"> <!--#4C4C4C-->
+                    <div class="container" id="myContainer">
 
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Administrator</a>

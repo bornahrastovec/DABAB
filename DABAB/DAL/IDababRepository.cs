@@ -8,13 +8,13 @@ namespace DABAB.DAL
 {
     public interface IDABABRepository : IDisposable
     {
-        IEnumerable<Movie> GetMovies();
-        IEnumerable<Actor> GetActors();
-        IEnumerable<Genre> GetGenres();
+        IEnumerable<Movie> GetAllMovies();
+        IEnumerable<Actor> GetAllActors();
+        IEnumerable<Genre> GetAllGenres();
+        IEnumerable<Actor> GetActorsByMovieId(int id);
 
         Movie GetMovieById(int id);
         Actor GetActorById(int id);
-        IQueryable<Actor> GetActorsByMovieId(int id);
         Genre GetGenreById(int id);
 
         void AddMovie(Movie movie);
