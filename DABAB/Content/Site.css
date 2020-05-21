@@ -31,12 +31,14 @@ textarea {
     max-width: 280px;
 }
 
-h1,p {
+h1, p {
     color: white;
 }
+
 hr {
-    border-color:white !important;
+    border-color: white !important;
 }
+
 .card {
     color: black;
     max-height: 100ch;
@@ -49,62 +51,76 @@ hr {
 }
 
 .table {
-    color:white;
+    color: white;
 }
+
 .text-white {
     color: white;
 }
+
 p {
-    color:white;
+    color: white;
 }
-.bijelo{
-    color:white;
+
+.bijelo {
+    color: white;
 }
-.rating {
-    position: absolute;
+
+.mainContainer{
     text-align:center;
-    margin-left:20%;
+}
+
+.rating {
+    position: relative;
+    transform: translateX(-25%);
     direction: rtl;
     display: flex;
 }
-.rating input
-{
-        display:none;
+
+.rating input {
+  display: none;
 }
-.rating label 
-{
-   display: block;
-   cursor: pointer;
-   width: 50px;
-   
+
+.rating label {
+  cursor: pointer;
 }
-.rating label:before
-{
-    content:'\f005';
-    font-family:fontAwesome;
-    position:relative;
-    display:block;
-    font-size:50px;
-    color:dimgray;
+
+.rating label:before {
+    content: '\f005';
+    font-family: fontAwesome;
+    position: relative;
+    display: block;
+    font-size: 50px;
+    color: dimgray;
 }
-.rating label:after
-{
+
+.rating label:after {
     content: '\f005';
     font-family: fontAwesome;
     position: absolute;
     display: block;
     font-size: 50px;
-    color:gold;
-    top:0;
-    opacity:0;
-    text-shadow:0 2px 5px rgba(0,0,0,.5);
+    color: gold;
+    top: 0;
+    opacity: 0;
+    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+
 }
-.rating input:checked ~ label:after 
-{
+
+.rating input:checked ~ label:after {
     opacity: 1;
 }
 
 
+#movieInfo {
+    margin-top: 25px;
+    text-align: center;
+    border: 1px solid;
+    position: relative;
+    background-color: lightcoral;
+    box-shadow: 15px 15px 3px rgba(0,0,0,.5);
+}
 
-
-
+#movieImage {
+    position: relative;
+}
