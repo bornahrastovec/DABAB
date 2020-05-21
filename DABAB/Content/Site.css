@@ -60,3 +60,53 @@ p {
 .bijelo{
     color:white;
 }
+.rating{
+    position:absolute;
+    left:850px;
+    transform:translate(-50%,-50%);
+    direction:rtl;
+    display:flex;
+}
+.rating input
+{
+        display:none;
+}
+.rating label 
+{
+   display: block;
+   cursor: pointer;
+   width: 50px;
+   background-color: gray;
+}
+.rating label:before
+{
+    content:'\f005';
+    font-family:fontAwesome;
+    position:relative;
+    display:block;
+    font-size:50px;
+    color:dimgray;
+}
+.rating label:after
+{
+    content: '\f005';
+    font-family: fontAwesome;
+    position: absolute;
+    display: block;
+    font-size: 50px;
+    color:gold;
+    top: 0;
+    opacity:0;
+    transition:.5s;
+    text-shadow:0 2px 5px rgba(0,0,0,.5);
+}
+.rating label:hover:after,
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after
+{
+    opacity:1;
+}
+
+
+
+

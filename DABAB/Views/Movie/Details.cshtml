@@ -1,38 +1,56 @@
 ﻿@model DABAB.Models.Movie
 
 @{
-	ViewBag.Title = "Detalji o filmu";
-	
+    ViewBag.Title = "Detalji o filmu";
+
 
 }
 
 <h2>@ViewBag.Title</h2>
-<br/>
+<br />
 <link rel="stylesheet" href="~/Content/Site.css" type="text/css" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="container" id="mainContainer">
-	<div class="row ">
-		<div class="col-md-6" style="text-align: center;">
-			<img src="~/@Model.ImagePath" style="width: 400px; height: 400px;" />
-		</div>
-		<div class="col-md-6" style="text-align: center;">
-			<h1>@Model.Title | @Model.ReleaseDate.Year.ToString()</h1>
-			<h4>Rating: @Model.Rating</h4>
-			@*<h5>
-					Glumci:
-					@foreach (var actor in Model.Actors)
-					{
-						actor.Actor.Surname.ToString();
-					}
-					<p> Opis: @Model.Description</p>
-				</h5>*@
-			<h5>Opis: @Model.Description</h5>
-		</div>
-
-	</div>
+    <div class="row ">
+        <div class="col-md-6" style="text-align: center;">
+            <img src="~/@Model.ImagePath" style="width: 400px; height: 400px;" />
+        </div>
+        <div class="col-md-6" style="text-align: center;">
+            <h1>@Model.Title | @Model.ReleaseDate.Year.ToString()</h1>
+            <h4>Rating: @Model.Rating</h4>
+            @*<h5>
+                    Glumci:
+                    @foreach (var actor in Model.Actors)
+                    {
+                        actor.Actor.Surname.ToString();
+                    }
+                    <p> Opis: @Model.Description</p>
+                </h5>*@
+            <h5>Opis: @Model.Description</h5>
+        </div>
+    </div>
 </div>
-<br/>
+<div class="col-md-10" style="text-align: right;">
+    <div class="rating">
+        <input type="radio" name="star" id="star1"><label for="star1" title="5+">
+        </label>
+        <input type="radio" name="star" id="star2"><label for="star2" title="4+">
+        </label>
+        <input type="radio" name="star" id="star3"><label for="star3" title="3+">
+        </label>
+        <input type="radio" name="star" id="star4"><label for="star4" title="2+">
+        </label>
+        <input type="radio" name="star" id="star5"><label for="star5" title="1+">
+        </label>
+    </div>
+    <br />
+    <button type="button" class="btn btn-primary">
+        <a style="color:white;" href="@Url.Action("","")">Submit</a>
+    </button>
+</div>
+<br />
 <button type="button" class="btn btn-info btn-sm waves-effect waves-light">
-	<a href="/Home/Index" class="text-white">Povratak na početnu</a>
+    <a href="/Home/Index" class="text-white">Povratak na početnu</a>
 </button>
 
