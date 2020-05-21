@@ -15,6 +15,7 @@
     <div class="row ">
         <div class="col-md-6" style="text-align: center;">
             <img src="~/@Model.ImagePath" style="width: 400px; height: 400px;" />
+            <input type="hidden" id="rating" value="@Model.Rating" />
         </div>
         <div class="col-md-6" style="text-align: center;">
             <h1>@Model.Title | @Model.ReleaseDate.Year.ToString()</h1>
@@ -54,3 +55,36 @@
     <a href="/Home/Index" class="text-white">Povratak na početnu</a>
 </button>
 
+<script>
+    var ratingElem = document.getElementById("rating");
+    var ratingValue = ratingElem.getAttribute("value");
+    console.log(ratingValue);
+
+    function check(starX) {
+        document.getElementById(starX).checked = true;
+    }
+
+    switch (ratingValue) {
+
+        case ("OneStar"):
+            check("star1")
+            break;
+        case ("Twostars"):
+            check("star2")
+            break;
+
+        case ("ThreeStars"):
+            check("star3")
+            break;
+
+        case ("FourStars"):
+            check("star4")
+            break;
+
+        case ("FiveStars"):
+            check("star5")
+            break;
+
+    }
+
+</script>
