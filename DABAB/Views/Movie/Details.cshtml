@@ -19,7 +19,20 @@
         </div>
         <div class="col-md-6" style="text-align: center;">
             <h1>@Model.Title | @Model.ReleaseDate.Year.ToString()</h1>
-            <h4>Rating: @Model.Rating</h4>
+            <div class="col-md-6" style="text-align: right;">
+                <div class="rating">
+                    <input disabled type="radio" name="star" id="star1"><label for="star1" title="5+">
+                    </label>
+                    <input disabled type="radio" name="star" id="star2"><label for="star2" title="4+">
+                    </label>
+                    <input disabled type="radio" name="star" id="star3"><label for="star3" title="3+">
+                    </label>
+                    <input disabled type="radio" name="star" id="star4"><label for="star4" title="2+">
+                    </label>
+                    <input disabled type="radio" name="star" id="star5"><label for="star5" title="1+">
+                    </label>
+                </div>
+            </div>
             @*<h5>
                     Glumci:
                     @foreach (var actor in Model.Actors)
@@ -28,27 +41,9 @@
                     }
                     <p> Opis: @Model.Description</p>
                 </h5>*@
-            <h5>Opis: @Model.Description</h5>
+            <h5 style="margin-top:15%;">Opis: @Model.Description</h5>
         </div>
     </div>
-</div>
-<div class="col-md-10" style="text-align: right;">
-    <div class="rating">
-        <input type="radio" name="star" id="star1"><label for="star1" title="5+">
-        </label>
-        <input type="radio" name="star" id="star2"><label for="star2" title="4+">
-        </label>
-        <input type="radio" name="star" id="star3"><label for="star3" title="3+">
-        </label>
-        <input type="radio" name="star" id="star4"><label for="star4" title="2+">
-        </label>
-        <input type="radio" name="star" id="star5"><label for="star5" title="1+">
-        </label>
-    </div>
-    <br />
-    <button type="button" class="btn btn-primary">
-        <a style="color:white;" href="@Url.Action("","")">Submit</a>
-    </button>
 </div>
 <br />
 <button type="button" class="btn btn-info btn-sm waves-effect waves-light">
@@ -67,10 +62,10 @@
     switch (ratingValue) {
 
         case ("OneStar"):
-            check("star1")
+            check("star5")
             break;
-        case ("Twostars"):
-            check("star2")
+        case ("TwoStars"):
+            check("star4")
             break;
 
         case ("ThreeStars"):
@@ -78,11 +73,11 @@
             break;
 
         case ("FourStars"):
-            check("star4")
+            check("star2")
             break;
 
         case ("FiveStars"):
-            check("star5")
+            check("star1")
             break;
 
     }
