@@ -62,8 +62,8 @@ p {
 }
 .rating {
     position: absolute;
-    padding-left: 110%;
-    transform: translate(-30%,-0%);
+    text-align:center;
+    margin-left:20%;
     direction: rtl;
     display: flex;
 }
