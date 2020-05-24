@@ -30,6 +30,7 @@ namespace DABAB.Models
         public Rating Rating { get; set; }
         [Display(Name = "Datum izdavanja")]
         public DateTime ReleaseDate { get; set; }
+        [Display(Name = "Putanja slike")]
         public string ImagePath { get; set; }
         public virtual ICollection<MovieActor> Actors { get; set; }
         public virtual ICollection<MovieGenre> Genres { get; set; }

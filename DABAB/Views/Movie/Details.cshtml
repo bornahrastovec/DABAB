@@ -13,7 +13,7 @@
 <div class="container" id="mainContainer">
     <div class="row">
         <div class="col-md-6" id="movieImage">
-            <img src="~/@Model.ImagePath"style="width: 400px; height: 400px;" />
+            <img src="~/@Model.ImagePath"style="width: 320px; height: 320px;" />
             <input type="hidden" id="rating" value="@Model.Rating" />
         </div>
         <div class="col-md-6" id="movieInfo">
@@ -40,11 +40,12 @@
                     }
                     <p> Opis: @Model.Description</p>
                 </h5>*@
-            <h5 style="margin-top:15%;">Opis: @Model.Description</h5>
+            <h5 style="margin-top:5%;">Opis: @Model.Description</h5>
         </div>
     </div>
 </div>
-<br />
+<br/>
+
 <button type="button" class="btn btn-info btn-sm waves-effect waves-light">
     <a href="/Home/Index" class="text-white">Povratak na početnu</a>
 </button>

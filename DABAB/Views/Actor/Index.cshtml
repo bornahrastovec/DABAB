@@ -14,7 +14,7 @@
     <tr>
         <th>
             <button type="button" class="btn btn-primary">
-                @Html.ActionLink("Create New", "Create", "", new { @class = "text-white" })
+                @Html.ActionLink("Dodaj", "Create", "", new { @class = "text-white" })
             </button>
         </th>
         <th>
@@ -52,10 +52,10 @@
             </td>
             <td>
                 <button type="button" class="btn btn-primary">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ActorId })
+                    @Html.ActionLink("Ažuriraj", "Edit", new { id = item.ActorId })
                 </button>
                 <button type="button" class="btn btn-primary">
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ActorId })
+                    @Html.ActionLink("Briši", "Delete", new { id = item.ActorId })
                 </button>
             </td>
         </tr>
