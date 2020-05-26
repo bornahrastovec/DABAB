@@ -287,7 +287,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\28DaysLater.jpg" />
+    <Content Include="Content\images\30821629_170650547093499_4781238130984881521_o.jpg" />
+    <Content Include="Content\images\46519013_2384765268219441_8328298623280349184_o.jpg" />
+    <Content Include="Content\images\56697056_2863988780285521_3731458094887075840_o.jpg" />
+    <Content Include="Content\images\62519626_1476865069105262_4405187486939086848_o.jpg" />
     <Content Include="Content\images\6underground.jpg" />
+    <Content Include="Content\images\74632529_2389011991414144_1461815861772812288_o.jpg" />
     <Content Include="Content\images\Apollo13.jpg" />
     <Content Include="Content\images\Baywatch.jpg" />
     <Content Include="Content\images\BeautifulCreatures.jpg" />
