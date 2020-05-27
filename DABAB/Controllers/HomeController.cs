@@ -38,6 +38,13 @@ namespace DABAB.Controllers
             return View();
         }
 
+        public ActionResult FAQ()
+        {
+            
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

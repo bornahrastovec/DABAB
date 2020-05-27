@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "FAQ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+<h1>FAQ</h1>
+
+
+
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Koliko često objavljujete nove filmove?
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                Novi filmovi su objavljeni što je prije moguće nakon što su filmovi pušteni na gledanje javnosti.
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Što je portal za pretraživanje filmova?
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                Portal za pretraživanje filmova je mjesto na kojem se nalazi velik broj filmova s
+                pripadajućim opisom radnje, recenzijom te naslovnom fotografijom.
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Kako se registrirati?
+                </button>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                Registracija se vrši tako da novi korisnik ode na odgovarajući dio stranice namijenjen za
+                registraciju korisnika. Tamo pratite tražene informacije o vama i pritisnete gumb za konačnu registraciju.
+                Nakon što ste se registrirali, potrebno je prijaviti se što činite svaki put prilikom pristupa stranici.
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                    Tko može dodavati opise novih filmova?
+                </button>
+            </h2>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+            <div class="card-body">
+                Filmove dodaju administratori portala za pretraživanje filmova kako bi se izbjegla ponavljanja
+                istih filmova ili neki drugi neželjeni ishodi.
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingFive">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                    Zašto nema trailera?
+                </button>
+            </h2>
+        </div>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+            <div class="card-body">
+                Budući da je ovo tek projekt u nastajanju, svakako imamo na umu dodati videozapise pregleda filmova.
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingSix">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+                    Što je recenzija?
+                </button>
+            </h2>
+        </div>
+        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+            <div class="card-body">
+                Recenzija je kritičo pristupanje nekom djelu, u ovom slučaju filmskom, te njeno vrednovanje
+                u određenom rangu. Na portalu su filmovi recenzirani ocjenama od 1 do 5 te su
+                recenzije slikovito prikazane zvjezdicama.
+            </div>
+        </div>
+    </div>
+
+</div> 
