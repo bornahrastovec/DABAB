@@ -11,6 +11,7 @@
         </div>
     </div>
 
+
     <div class="container" style="text-align: center">
         <div class="row">
             @foreach (var item in Model)
@@ -58,6 +59,16 @@
 
         </div>
     </div>
+    <table class="table">
+        <tr>
+            <th>
+                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                {
+                    @Html.TextBox("search") <input type="Submit" value="Traži" />
+                }
+            </th>
+        </tr>
+    </table>
 
     <script>
         $.ajax({

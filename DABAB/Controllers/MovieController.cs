@@ -17,9 +17,16 @@ namespace DABAB.Controllers
         private DABABContext db = new DABABContext();
 
         // GET: Movie
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            return View(db.Movies.ToList());
+            var list = db.Movies.ToList();
+            if (!String.IsNullOrWhiteSpace(search))
+            {
+                list = list.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
+            }
+            return View(list);
+
+
         }
         public ActionResult Korisnik()
         {

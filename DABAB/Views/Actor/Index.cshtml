@@ -13,6 +13,12 @@
 <table class="table">
     <tr>
         <th>
+            @using (Html.BeginForm("Index", "Actor", FormMethod.Get))
+            {
+                @Html.TextBox("search") <input type="Submit" value="Traži" />
+            }
+        </th>
+        <th>
             <button type="button" class="btn btn-primary">
                 @Html.ActionLink("Dodaj", "Create", "", new { @class = "text-white" })
             </button>

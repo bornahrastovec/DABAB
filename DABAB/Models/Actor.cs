@@ -20,5 +20,13 @@ namespace DABAB.Models
         public DateTime DateofBirth { get; set; }
         public virtual ICollection<MovieActor> Movies { get; set; }
 
+        public string SurnameName
+        {
+            get
+            {
+                return Surname + " " + Name;
+            }
+        }
+
     }
 }

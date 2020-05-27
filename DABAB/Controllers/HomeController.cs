@@ -24,11 +24,16 @@ namespace DABAB.Controllers
 
             this.repository = new DABABRepository(new DABABContext());
         }
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            var movie = repository.GetMovieById(2);
-            var movies = repository.GetAllMovies();
-            return View(movies.ToList());
+            
+            var movies = repository.GetAllMovies().ToList();
+
+            if (!String.IsNullOrWhiteSpace(search))
+            {
+                movies = movies.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
+            }
+            return View(movies);
         }
 
         public ActionResult About()

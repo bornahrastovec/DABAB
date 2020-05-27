@@ -17,9 +17,14 @@ namespace DABAB.Controllers
         private DABABContext db = new DABABContext();
 
         // GET: Actor
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            return View(db.Actors.ToList());
+            var list = db.Actors.ToList();
+            if (!String.IsNullOrWhiteSpace(search))
+            {
+                list = list.Where(x => x.SurnameName.ToLower().Contains(search.ToLower())).ToList();
+            }
+            return View(list);
         }
         public ActionResult Korisnik()
         {
