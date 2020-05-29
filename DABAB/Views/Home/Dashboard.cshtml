@@ -1,0 +1,149 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+<link href="~/Content/Dashboard.less" type="text/css" rel="stylesheet" />
+
+<!-- add welcome message here-->
+<!-- add set of cards and icons here -->
+
+
+<div class="modal fade" id="movieModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color: black;">Unos filma</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                @{using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken();
+                        <form id="modalForm" role="form" class="my-form" method="post" enctype="multipart/form-data">
+                            <div class="md-form">
+                                <input type="text" id="title" data-bind="value: movieTitle" class="form-control">
+                                <label for="title">Naslov</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="text" id="desc" data-bind="value: movieDesc" class="form-control">
+                                <label for="desc">Opis</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="text" data-bind="movieRating" id="rating" class="form-control">
+                                <label for="rating">Rating</label>
+                            </div>
+                            <div class="md-form datepicker">
+                                <input placeholder="Datum izlaska" type="date" id="example" class="form-control" data-bind="value: movieReleaseDate">
+                            </div>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01" data-bind="value: movieImagePath"
+                                           aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01" >Odaberi sliku</label>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                }
+
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                    <button type="button" class="btn btn-primary" data-bind="click: saveMovie">Spremi</button>
+                </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="actorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="md-form">
+                    <input type="text" id="form1" class="form-control">
+                    <label for="form1">Glumac glumac</label>
+                </div>
+                <div class="md-form">
+                    <input type="text" id="form1" class="form-control">
+                    <label for="form1">Blabla</label>
+                </div>
+                <div class="md-form">
+                    <input type="text" id="form1" class="form-control">
+                    <label for="form1">Nekaj</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container" style="text-align: center;" id="dashboardButtons">
+    <h1 style="text-align: center;"> Općenito </h1>
+    <div class="row">
+        <div class="dashboard-card">
+            <div class="dashboard-card-image">
+                <img src="~/Content/images/Dashboard/Users.png" id="cardImage" />
+            </div>
+            <div class="dashboard-card-desc">
+                <h3>Korisnici</h3>
+            </div>
+        </div>
+    </div>
+    <h1 style="text-align: center;"> Novi unosi </h1>
+    <div class="row">
+        <div class="dashboard-card" data-bind="click: openMovieModal">
+            <div class="dashboard-card-image">
+                <img src="~/Content/images/Dashboard/Movie.png" id="cardImage" />
+            </div>
+            <div class="dashboard-card-desc">
+                <h3>Dodaj film</h3>
+            </div>
+        </div>
+        <div class="dashboard-card" data-bind="click: openActorModal">
+            <div class="dashboard-card-image">
+                <img src="~/Content/images/Dashboard/Actor.png" id="cardImage" />
+            </div>
+            <div class="dashboard-card-desc">
+                <h3>Dodaj glumca</h3>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <div class="dashboard-card-image">
+                <img src="~/Content/images/Dashboard/File.png" id="cardImage" />
+            </div>
+            <div class="dashboard-card-desc">
+                <h3>Dodaj glumca filmu </h3>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+@Scripts.Render("~/bundles/Dashboard")
+<!-- time -->
+<!-- Init KO script -->
+<script type="text/javascript">
+    $(function () {
+
+        //initialize
+        app.Dashboard.Init();
+
+    });
+</script>

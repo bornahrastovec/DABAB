@@ -50,6 +50,11 @@ namespace DABAB.Controllers
             return View();
         }
 
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -58,7 +63,31 @@ namespace DABAB.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual JsonResult SaveMovieData (string Title, string Desc, Rating Rating, DateTime ReleaseDate, string ImagePath)
+        {
+            bool success;
+
+            var newMovie = new Movie();
+
+            newMovie.Title = Title;
+            newMovie.Description = Desc;
+            newMovie.Rating = Rating;
+            newMovie.ReleaseDate = ReleaseDate;
+            newMovie.ImagePath = ImagePath;
+
+            repository.AddMovie(newMovie);
+            repository.Save();
+
+            success = true;
+
+            return Json(new
+            {
+                success
+            }, JsonRequestBehavior.AllowGet);
+        }
         
+       
         public virtual JsonResult GetMovieDetailsModal(int MovieId)
         {
 

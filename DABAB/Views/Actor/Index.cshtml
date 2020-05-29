@@ -30,7 +30,7 @@
         </th>
     </tr>
 </table>
-<table class="table">
+<table class="table table table-dark table-responsive-lg">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -57,10 +57,10 @@
                 @Html.DisplayFor(modelItem => item.DateofBirth)
             </td>
             <td>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-light">
                     @Html.ActionLink("Ažuriraj", "Edit", new { id = item.ActorId })
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-warning">
                     @Html.ActionLink("Briši", "Delete", new { id = item.ActorId })
                 </button>
             </td>

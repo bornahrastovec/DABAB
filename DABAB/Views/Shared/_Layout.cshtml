@@ -16,7 +16,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/css/mdb.min.css" rel="stylesheet">
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="~/Content/NavbarCustom.css" rel="stylesheet" />
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+    @Scripts.Render("~/bundles/knockout")
+
 
 </head>
 <body>
@@ -40,13 +45,19 @@
                         <a class="nav-link" href="@Url.Action("Index","Actor", null)">Glumci</a>
                     </li>
                 </ul>
-                <div class="navbar navbar-inverse navbar-fixed-bottom  navbar-dark" style="background-color:#C11515;" id="navbarDropdown"> <!--#4C4C4C-->
+                <div class="navbar navbar-inverse navbar-fixed-bottom  navbar-dark" style="background-color:#C11515;" id="navbarDropdown">
+                    <!--#4C4C4C-->
                     <div class="container" id="myContainer">
+
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                        {
+                            @Html.TextBox("search") <input type="Submit" value="Traži" class="btn btn-sm" />
+                        }
 
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Administrator</a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="@Url.Action("Index","Movie", null)">Kontrolna ploča</a>
+                            <a class="dropdown-item" href="@Url.Action("Dashboard","Home", null)">Kontrolna ploča</a>
                             <a class="dropdown-item" href="#">Povijest pristupa</a>
                             <a class="dropdown-item" href="#">Sample</a>
                         </div>
@@ -76,9 +87,9 @@
                             <a class="nav-link" href="@Url.Action("FAQ","Home", null)">FAQ</a>
                         </li>
                     </ul>
-                    </div>
                 </div>
-</nav>
+            </div>
+        </nav>
     </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -87,9 +98,11 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/js/mdb.min.js"></script>
-    @RenderSection("scripts", required: false)
     <!-- JQuery -->
-
-
 </body>
 </html>
+
+
+
+
+
