@@ -1,9 +1,12 @@
-﻿@model IEnumerable<DABAB.Models.Movie>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<DABAB.Models.Movie>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
@@ -13,7 +16,7 @@
 <table class="table">
     <tr>
         <th>
-            @using (Html.BeginForm("Index","Movie",FormMethod.Get))
+            @using (Html.BeginForm("Index", "Movie", FormMethod.Get))
             {
                 @Html.TextBox("search") <input type="Submit" value="Traži" />
             }
@@ -33,10 +36,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.First().Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            @Html.DisplayNameFor(model => model.First().ReleaseDate)
         </th>
         <th></th>
     </tr>
@@ -62,6 +65,24 @@
     }
 
 </table>
+
+<div id="pager">
+    Ukupno rezultata: @Model.TotalItemCount <br />
+
+    Stranica: @(Model.PageCount < Model.PageCount ? 0 : Model.PageNumber) od @Model.PageCount
+    <br />
+    <br />
+   
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = Request.QueryString["search"] }),new PagedListRenderOptions {  
+                         DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                         DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                         DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                         DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                         MaximumPageNumbersToDisplay = 5 })
+</div>
+
+
 
 <p>
     <a href="@Url.Action("moviesPDF","Movie")" class="btn btn-primary">

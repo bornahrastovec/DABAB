@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using DABAB.DAL;
 using DABAB.Models;
 using DABAB.Reports;
+using PagedList;
+using PagedList.Mvc;
 
 namespace DABAB.Controllers
 {
@@ -17,12 +19,14 @@ namespace DABAB.Controllers
         private DABABContext db = new DABABContext();
 
         // GET: Movie
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, int? page)
         {
-            var list = db.Movies.ToList();
+            int pagesize = 10;
+            int pagenumber = (page ?? 1);
+            var list = db.Movies.ToList().ToPagedList(pagenumber,pagesize);
             if (!String.IsNullOrWhiteSpace(search))
             {
-                list = list.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
+                list = list.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList().ToPagedList(pagenumber, pagesize);
             }
             return View(list);
 

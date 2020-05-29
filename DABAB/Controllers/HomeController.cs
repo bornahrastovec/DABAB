@@ -5,6 +5,8 @@ using System.Web;
 using DABAB.Models;
 using DABAB.DAL;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace DABAB.Controllers
 {
@@ -24,14 +26,14 @@ namespace DABAB.Controllers
 
             this.repository = new DABABRepository(new DABABContext());
         }
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, int? page)
         {
-            
-            var movies = repository.GetAllMovies().ToList();
-
+            int pagesize = 12;
+            int pagenumber = (page ?? 1);
+            var movies = repository.GetAllMovies().ToPagedList(pagenumber,pagesize);
             if (!String.IsNullOrWhiteSpace(search))
             {
-                movies = movies.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
+                movies = movies.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList().ToPagedList(pagenumber, pagesize);
             }
             return View(movies);
         }

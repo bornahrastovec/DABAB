@@ -17,6 +17,8 @@ html, body {
     padding-right: 15px;
 }
 
+
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -124,3 +126,36 @@ p {
 #movieImage {
     position: relative;
 }
+
+.pagination li{
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 8px;
+    margin: 0 2px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+        .pagination a:active {
+            background-color: #E65353;
+            color: green;
+        }
+    .pagination a:focus {
+        background-color: #E65353;
+        color: green;
+    }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+    
