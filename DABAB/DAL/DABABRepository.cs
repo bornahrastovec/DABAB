@@ -158,7 +158,17 @@ namespace DABAB.DAL
 
         public void AddMovie(Movie movie)
         {
-            throw new NotImplementedException();
+            try
+            {
+                context.Movies.Add(movie);
+                context.SaveChanges();
+
+            }
+            catch
+            {
+                Exception ex = new Exception();
+                throw ex;
+            }
         }
 
         public void DeleteActor(int id)

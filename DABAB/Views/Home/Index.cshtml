@@ -9,10 +9,11 @@
 <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 
 <body>
-    <div id="mdb-preloader" class="flex-center">
-        <div id="preloader-markup">
-        </div>
-    </div>
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        @Html.TextBox("search") <input type="Submit" value="Traži" />
+    }
 
 
     <div class="container" style="text-align: center">
@@ -65,10 +66,6 @@
     <table class="table">
         <tr>
             <th>
-                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-                {
-                    @Html.TextBox("search") <input type="Submit" value="Traži" />
-                }
             </th>
         </tr>
     </table>
