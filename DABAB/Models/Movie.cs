@@ -23,13 +23,19 @@ namespace DABAB.Models
 
         [Key]
         public int MovieId { get; set; }
+
         [Display(Name = "Naslov")]
         public string Title { get; set; }
+
         [Display(Name = "Opis")]
         public string Description { get; set; }
+
         public Rating Rating { get; set; }
+
         [Display(Name = "Datum izdavanja")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ReleaseDate { get; set; }
+
         [Display(Name = "Putanja slike")]
         public string ImagePath { get; set; }
         public virtual ICollection<MovieActor> Actors { get; set; }
