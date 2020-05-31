@@ -33,8 +33,6 @@ namespace DABAB.Controllers
             ViewBag.Sort = sort;
             ViewBag.DateSort = String.IsNullOrEmpty(sort) ? "date" : "";
             ViewBag.NameSort = sort == "name" ? "nameDesc" : "name";
-            /*ViewBag.NameSort = String.IsNullOrEmpty(sort) ? "titleDesc" : "";
-            ViewBag.DateSort = sort == "date" ? "dateDesc" : "date";*/
             ViewBag.RatingSort = sort == "rating" ? "ratingDesc" : "rating";
 
 

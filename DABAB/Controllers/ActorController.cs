@@ -19,18 +19,41 @@ namespace DABAB.Controllers
         private DABABContext db = new DABABContext();
 
         // GET: Actor
-        public ActionResult Index(string search, int? page)
+        public ActionResult Index(string search, int? page, string sort)
         {
-            int pagesize = 10;
-            int pagenumber = (page ?? 1);
-            var list = db.Actors.ToList().ToPagedList(pagenumber, pagesize);
+            ViewBag.Sort = sort;
+            ViewBag.SurnameSort = String.IsNullOrEmpty(sort) ? "surnameDesc" : "";
+            ViewBag.NameSort = sort == "name" ? "nameDesc" : "name";
+
+
+            var list = db.Actors.ToList();
             if (!String.IsNullOrWhiteSpace(search))
             {
-                list = list.Where(x => x.SurnameName.ToLower().Contains(search.ToLower())).ToList().ToPagedList(pagenumber, pagesize);
+                list = list.Where(x => x.SurnameName.ToLower().Contains(search.ToLower())).ToList();
             }
-            return View(list);
+            switch (sort)
+            {
+                case "surnameDesc":
+                    list = list.OrderByDescending(x => x.Surname).ToList();
+                    break;
+                case "name":
+                    list = list.OrderBy(x => x.Name).ToList();
+                    break;
+                case "nameDesc":
+                    list = list.OrderByDescending(x => x.Name).ToList();
+                    break;
+                default:
+                    list = list.OrderBy(x => x.Surname).ToList();
+                    break;
+            }
+            int pagesize = 10;
+            int pagenumber = (page ?? 1);
+            return View(list.ToPagedList(pagenumber, pagesize));
+
+
         }
-            public ActionResult Korisnik()
+
+        public ActionResult Korisnik()
         {
             return View(db.Actors.ToList());
         }
