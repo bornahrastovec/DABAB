@@ -23,6 +23,10 @@ namespace DABAB.Controllers
         {
             ViewBag.Sort = sort;
             ViewBag.NameSort = String.IsNullOrEmpty(sort) ? "titleDesc" : "";
+            ViewBag.DateSort = sort == "date" ? "dateDesc" : "date";
+            ViewBag.RatingSort = sort == "rating" ? "ratingDesc" : "rating";
+
+
             var list = db.Movies.ToList();
             if (!String.IsNullOrWhiteSpace(search))
             {
@@ -32,6 +36,18 @@ namespace DABAB.Controllers
             {
                 case "titleDesc":
                     list = list.OrderByDescending(x => x.Title).ToList();
+                    break;
+                case "date":
+                    list = list.OrderBy(x => x.ReleaseDate).ToList();
+                    break;
+                case "dateDesc":
+                    list = list.OrderByDescending(x => x.ReleaseDate).ToList();
+                    break;
+                case "rating":
+                    list = list.OrderBy(x => x.Rating).ToList();
+                    break;
+                case "ratingDesc":
+                    list = list.OrderByDescending(x => x.Rating).ToList();
                     break;
                 default:
                     list = list.OrderBy(x => x.Title).ToList();

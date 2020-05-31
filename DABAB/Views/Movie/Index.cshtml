@@ -39,10 +39,11 @@
             @Html.ActionLink("Naziv", "Index", new { sort = ViewBag.NameSort, search = Request.QueryString["search"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().ReleaseDate)
+            @Html.ActionLink("Datum izdavanja", "Index", new { sort = ViewBag.DateSort, search = Request.QueryString["search"] })
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().Rating)
+            @Html.ActionLink("Rating", "Index", new { sort = ViewBag.RatingSort, search = Request.QueryString["search"] })
         </th>
         <th></th>
     </tr>
