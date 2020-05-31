@@ -5,6 +5,8 @@ using System.Web;
 using DABAB.Models;
 using DABAB.DAL;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace DABAB.Controllers
 {
@@ -24,19 +26,49 @@ namespace DABAB.Controllers
 
             this.repository = new DABABRepository(new DABABContext());
         }
-        public ActionResult Index(string search)
-        {
-            
-            var movies = repository.GetAllMovies().ToList();
+        
 
+        public ActionResult Index(string search, int? page, string sort)
+        {
+            ViewBag.Sort = sort;
+            ViewBag.DateSort = String.IsNullOrEmpty(sort) ? "date" : "";
+            ViewBag.NameSort = sort == "name" ? "nameDesc" : "name";
+            /*ViewBag.NameSort = String.IsNullOrEmpty(sort) ? "titleDesc" : "";
+            ViewBag.DateSort = sort == "date" ? "dateDesc" : "date";*/
+            ViewBag.RatingSort = sort == "rating" ? "ratingDesc" : "rating";
+
+
+            var list = repository.GetAllMovies().ToList();
             if (!String.IsNullOrWhiteSpace(search))
             {
-                movies = movies.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
+                list = list.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
             }
-            return View(movies);
+            switch (sort)
+            {
+                case "titleDesc":
+                    list = list.OrderByDescending(x => x.Title).ToList();
+                    break;
+                case "date":
+                    list = list.OrderBy(x => x.ReleaseDate).ToList();
+                    break;
+                case "name":
+                    list = list.OrderBy(x => x.Title).ToList(); break;
+                case "rating":
+                    list = list.OrderBy(x => x.Rating).ToList();
+                    break;
+                case "ratingDesc":
+                    list = list.OrderByDescending(x => x.Rating).ToList();
+                    break;
+                default:
+                    list = list.OrderByDescending(x => x.ReleaseDate).ToList();
+                    break;
+            }
+            int pagesize = 12;
+            int pagenumber = (page ?? 1);
+            return View(list.ToPagedList(pagenumber, pagesize));
         }
 
-        public ActionResult About()
+            public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 

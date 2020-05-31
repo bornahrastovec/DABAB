@@ -1,4 +1,6 @@
-﻿@model IEnumerable<DABAB.Models.Actor>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<DABAB.Models.Actor>
 
 @{
     ViewBag.Title = "Index";
@@ -30,16 +32,16 @@
         </th>
     </tr>
 </table>
-<table class="table table table-dark table-responsive-lg">
+<table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.First().Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Surname)
+            @Html.DisplayNameFor(model => model.First().Surname)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateofBirth)
+            @Html.DisplayNameFor(model => model.First().DateofBirth)
         </th>
         <th></th>
     </tr>
@@ -57,10 +59,10 @@
                 @Html.DisplayFor(modelItem => item.DateofBirth)
             </td>
             <td>
-                <button type="button" class="btn btn-light">
+                <button type="button" class="btn btn-primary">
                     @Html.ActionLink("Ažuriraj", "Edit", new { id = item.ActorId })
                 </button>
-                <button type="button" class="btn btn-warning">
+                <button type="button" class="btn btn-primary">
                     @Html.ActionLink("Briši", "Delete", new { id = item.ActorId })
                 </button>
             </td>
@@ -68,6 +70,24 @@
     }
 
 </table>
+
+<div id="pager">
+    Ukupno rezultata: @Model.TotalItemCount <br />
+
+    Stranica: @(Model.PageCount < Model.PageCount ? 0 : Model.PageNumber) od @Model.PageCount
+    <br />
+    <br />
+
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = Request.QueryString["search"] }), new PagedListRenderOptions
+    {
+                         DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                         DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                         DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                         DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                         MaximumPageNumbersToDisplay = 5
+    })
+</div>
 
 <p>
     <a href="@Url.Action("ActorsPDF","Actor")" class="btn btn-primary">

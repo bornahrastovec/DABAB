@@ -1,4 +1,7 @@
-﻿@model IEnumerable<DABAB.Models.Movie>
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<DABAB.Models.Movie>
 
 @{
     ViewBag.Title = "Home Page";
@@ -6,11 +9,23 @@
 <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 
 <body>
+    <table class="table">
+        <tr>
+            <th>
+                @using (Html.BeginForm("Index", "Movie", FormMethod.Get))
+                {
+                    @Html.TextBox("search") <input type="Submit" value="Traži" />
+                }
+            </th>
+            <th>
+                Sortiranje po:
+                @Html.ActionLink("Naziv", "Index", new { sort = ViewBag.NameSort, search = Request.QueryString["search"] }) /
+                @Html.ActionLink("Datum izdavanja", "Index", new { sort = ViewBag.DateSort, search = Request.QueryString["search"] }) /
+                @Html.ActionLink("Rating", "Index", new { sort = ViewBag.RatingSort, search = Request.QueryString["search"] })
+            </th>
+        </tr>
+    </table>
 
-    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-    {
-        @Html.TextBox("search") <input type="Submit" value="Traži" />
-    }
 
 
     <div class="container" style="text-align: center">
@@ -29,6 +44,7 @@
                         <div class="card-body">
                             <h4 class="card-title" style="color:black">@item.Title</h4>
                             <p class="card-text" style="max-height:50ch; -webkit-line-clamp: 5;">
+                                @item.ReleaseDate.Year
                             </p>
                             @Html.ActionLink("Detalji", "Details", "Movie", new { id = item.MovieId }, new { @class = "btn btn-info btn-sm" })
                         </div>
@@ -60,12 +76,25 @@
 
         </div>
     </div>
-    <table class="table">
-        <tr>
-            <th>
-            </th>
-        </tr>
-    </table>
+   
+
+    <div id="pager">
+        Ukupno rezultata: @Model.TotalItemCount <br />
+
+        Stranica: @(Model.PageCount < Model.PageCount ? 0 : Model.PageNumber) od @Model.PageCount
+        <br />
+        <br />
+
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = Request.QueryString["search"] }), new PagedListRenderOptions
+        {
+                             DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                             DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                             DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                             DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                             MaximumPageNumbersToDisplay = 5
+        })
+    </div>
 
     <script>
         $.ajax({
