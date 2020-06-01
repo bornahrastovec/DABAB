@@ -18,9 +18,9 @@
         <th>
             @using (Html.BeginForm("Index", "Movie", FormMethod.Get))
             {
-                @Html.TextBox("search") <input type="Submit" value="Traži" id="search" class="btn btn-sm"  />
+                    @Html.TextBox("search") <input type="Submit" value="Traži" class="btn btn-primary" />
             }
-        </th>
+            </th>
         <th>
             <button type="button" class="btn btn-primary">
                 @Html.ActionLink("Dodaj", "Create", "", new { @class = "text-white" })
@@ -33,7 +33,7 @@
         </th>
     </tr>
 </table>
-<table class="table table-dark table-responsive-lg">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.First().Title)
@@ -51,13 +51,13 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate.Date.Year)
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
             </td>
             <td>
-                <button type="button" class="btn btn-light">
+                <button type="button" class="btn btn-primary">
                     @Html.ActionLink("Ažuriraj", "Edit", new { id = item.MovieId })
                 </button>
-                <button type="button" class="btn btn-warning">
+                <button type="button" class="btn btn-primary">
                     @Html.ActionLink("Briši", "Delete", new { id = item.MovieId })
                 </button>
             </td>
@@ -89,9 +89,3 @@
         Kreiraj PDF
     </a>
 </p>
-
-<script>
-    $("input").keyup(function (data) {
-        console.log("Working!");
-    })
-</script>

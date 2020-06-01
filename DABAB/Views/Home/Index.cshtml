@@ -9,11 +9,21 @@
 <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 
 <body>
+    <div id="mdb-preloader" class="flex-center">
+        <div id="preloader-markup">
+        </div>
+    </div>
 
-    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-    {
-        @Html.TextBox("search") <input type="Submit" value="Traži" />
-    }
+    <table class="table">
+        <tr>
+            <th style="text-align:right">
+                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                {
+                    @Html.TextBox("search") <input type="Submit" value="Traži" class="btn btn-primary" />
+                }
+            </th>
+        </tr>
+    </table>
 
 
     <div class="container" style="text-align: center">
@@ -63,12 +73,6 @@
 
         </div>
     </div>
-    <table class="table">
-        <tr>
-            <th>
-            </th>
-        </tr>
-    </table>
 
     <div id="pager">
         Ukupno rezultata: @Model.TotalItemCount <br />
