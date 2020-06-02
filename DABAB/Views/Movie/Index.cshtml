@@ -18,9 +18,9 @@
         <th>
             @using (Html.BeginForm("Index", "Movie", FormMethod.Get))
             {
-                @Html.TextBox("search") <input type="Submit" value="Traži" />
+                    @Html.TextBox("search") <input type="Submit" value="Traži" class="btn btn-primary" />
             }
-        </th>
+            </th>
         <th>
             <button type="button" class="btn btn-primary">
                 @Html.ActionLink("Dodaj", "Create", "", new { @class = "text-white" })
