@@ -19,16 +19,43 @@ namespace DABAB.Controllers
         private DABABContext db = new DABABContext();
 
         // GET: Movie
-        public ActionResult Index(string search, int? page)
+        public ActionResult Index(string search, int? page, string sort)
         {
-            int pagesize = 10;
-            int pagenumber = (page ?? 1);
-            var list = db.Movies.ToList().ToPagedList(pagenumber,pagesize);
+            ViewBag.Sort = sort;
+            ViewBag.NameSort = String.IsNullOrEmpty(sort) ? "titleDesc" : "";
+            ViewBag.DateSort = sort == "date" ? "dateDesc" : "date";
+            ViewBag.RatingSort = sort == "rating" ? "ratingDesc" : "rating";
+
+
+            var list = db.Movies.ToList();
             if (!String.IsNullOrWhiteSpace(search))
             {
-                list = list.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList().ToPagedList(pagenumber, pagesize);
+                list = list.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
             }
-            return View(list);
+            switch (sort)
+            {
+                case "titleDesc":
+                    list = list.OrderByDescending(x => x.Title).ToList();
+                    break;
+                case "date":
+                    list = list.OrderBy(x => x.ReleaseDate).ToList();
+                    break;
+                case "dateDesc":
+                    list = list.OrderByDescending(x => x.ReleaseDate).ToList();
+                    break;
+                case "rating":
+                    list = list.OrderBy(x => x.Rating).ToList();
+                    break;
+                case "ratingDesc":
+                    list = list.OrderByDescending(x => x.Rating).ToList();
+                    break;
+                default:
+                    list = list.OrderBy(x => x.Title).ToList();
+                    break;
+            }
+            int pagesize = 10;
+            int pagenumber = (page ?? 1);
+            return View(list.ToPagedList(pagenumber,pagesize));
 
 
         }

@@ -35,10 +35,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.First().Name)
+            @Html.ActionLink("Ime", "Index", new { sort = ViewBag.NameSort, search = Request.QueryString["search"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().Surname)
+            @Html.ActionLink("Prezime", "Index", new { sort = ViewBag.SurnameSort, search = Request.QueryString["search"] })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.First().DateofBirth)
@@ -59,6 +59,9 @@
                 @Html.DisplayFor(modelItem => item.DateofBirth)
             </td>
             <td>
+                <button type="button" class="btn btn-primary">
+                    @Html.ActionLink("Detalji", "Details", new { id = item.ActorId })
+                </button>
                 <button type="button" class="btn btn-primary">
                     @Html.ActionLink("Ažuriraj", "Edit", new { id = item.ActorId })
                 </button>

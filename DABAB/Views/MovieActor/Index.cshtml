@@ -5,18 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="~/Content/Site.css" />
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table table-dark table-responsive-lg">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Actor.Name)
+            Glumac
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Movie.Title)
+            Film
         </th>
         <th></th>
     </tr>
@@ -24,15 +25,14 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Actor.Name)
+            @Html.DisplayFor(modelItem => item.Actor.SurnameName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Movie.Title)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Ažuriraj", "Edit", new { /* id=item.PrimaryKey */ }, new { @class="btn btn-light"})
+            @Html.ActionLink("Obriši", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-warning" })
         </td>
     </tr>
 }

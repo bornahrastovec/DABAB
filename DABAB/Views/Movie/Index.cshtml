@@ -36,10 +36,14 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.First().Title)
+            @Html.ActionLink("Naziv", "Index", new { sort = ViewBag.NameSort, search = Request.QueryString["search"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().ReleaseDate)
+            @Html.ActionLink("Datum izdavanja", "Index", new { sort = ViewBag.DateSort, search = Request.QueryString["search"] })
+
+        </th>
+        <th>
+            @Html.ActionLink("Rating", "Index", new { sort = ViewBag.RatingSort, search = Request.QueryString["search"] })
         </th>
         <th></th>
     </tr>
@@ -54,6 +58,26 @@
                 @Html.DisplayFor(modelItem => item.ReleaseDate)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+                <input type="hidden" id="rating" value="@item.Rating" />
+                <div class="rating">
+                    <input disabled type="radio" name="star" id="star1"><label for="star1" title="5+">
+                    </label>
+                    <input disabled type="radio" name="star" id="star2"><label for="star2" title="4+">
+                    </label>
+                    <input disabled type="radio" name="star" id="star3"><label for="star3" title="3+">
+                    </label>
+                    <input disabled type="radio" name="star" id="star4"><label for="star4" title="2+">
+                    </label>
+                    <input disabled type="radio" name="star" id="star5"><label for="star5" title="1+">
+                    </label>
+                </div>
+                
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary">
+                    @Html.ActionLink("Detalji", "Details", new { id = item.MovieId })
+                </button>
                 <button type="button" class="btn btn-primary">
                     @Html.ActionLink("Ažuriraj", "Edit", new { id = item.MovieId })
                 </button>
@@ -72,14 +96,16 @@
     Stranica: @(Model.PageCount < Model.PageCount ? 0 : Model.PageNumber) od @Model.PageCount
     <br />
     <br />
-   
 
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = Request.QueryString["search"] }),new PagedListRenderOptions {  
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = Request.QueryString["search"] , sort = Request.QueryString["sort"] }), new PagedListRenderOptions
+    {
                          DisplayLinkToFirstPage = PagedListDisplayMode.Never,
                          DisplayLinkToLastPage = PagedListDisplayMode.Never,
                          DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
                          DisplayLinkToNextPage = PagedListDisplayMode.Always,
-                         MaximumPageNumbersToDisplay = 5 })
+                         MaximumPageNumbersToDisplay = 5
+    })
 </div>
 
 
@@ -89,3 +115,38 @@
         Kreiraj PDF
     </a>
 </p>
+
+
+<script>
+    var ratingElem = document.getElementById("rating");
+    var ratingValue = ratingElem.getAttribute("value");
+    console.log(ratingValue);
+
+    function check(starX) {
+        document.getElementById(starX).checked = true;
+    }
+
+    switch (ratingValue) {
+
+        case ("OneStar"):
+            check("star5")
+            break;
+        case ("TwoStars"):
+            check("star4")
+            break;
+
+        case ("ThreeStars"):
+            check("star3")
+            break;
+
+        case ("FourStars"):
+            check("star2")
+            break;
+
+        case ("FiveStars"):
+            check("star1")
+            break;
+
+    }
+
+</script>

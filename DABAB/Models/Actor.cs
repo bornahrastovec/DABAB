@@ -17,6 +17,8 @@ namespace DABAB.Models
         [Display(Name = "Prezime")]
         public string Surname { get; set; }
         [Display(Name = "Datum rođenja")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+
         public DateTime DateofBirth { get; set; }
         public virtual ICollection<MovieActor> Movies { get; set; }
 

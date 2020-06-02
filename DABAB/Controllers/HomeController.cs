@@ -26,19 +26,47 @@ namespace DABAB.Controllers
 
             this.repository = new DABABRepository(new DABABContext());
         }
-        public ActionResult Index(string search, int? page)
+        
+
+        public ActionResult Index(string search, int? page, string sort)
         {
-            int pagesize = 12;
-            int pagenumber = (page ?? 1);
-            var movies = repository.GetAllMovies().ToPagedList(pagenumber,pagesize);
+            ViewBag.Sort = sort;
+            ViewBag.DateSort = String.IsNullOrEmpty(sort) ? "date" : "";
+            ViewBag.NameSort = sort == "name" ? "nameDesc" : "name";
+            ViewBag.RatingSort = sort == "rating" ? "ratingDesc" : "rating";
+
+
+            var list = repository.GetAllMovies().ToList();
             if (!String.IsNullOrWhiteSpace(search))
             {
-                movies = movies.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList().ToPagedList(pagenumber, pagesize);
+                list = list.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
             }
-            return View(movies);
+            switch (sort)
+            {
+                case "titleDesc":
+                    list = list.OrderByDescending(x => x.Title).ToList();
+                    break;
+                case "date":
+                    list = list.OrderBy(x => x.ReleaseDate).ToList();
+                    break;
+                case "name":
+                    list = list.OrderBy(x => x.Title).ToList(); break;
+                case "rating":
+                    list = list.OrderBy(x => x.Rating).ToList();
+                    break;
+                case "ratingDesc":
+                    list = list.OrderByDescending(x => x.Rating).ToList();
+                    break;
+                default:
+                    list = list.OrderByDescending(x => x.ReleaseDate).ToList();
+                    break;
+            }
+            int pagesize = 12;
+            int pagenumber = (page ?? 1);
+            return View(list.ToPagedList(pagenumber, pagesize));
         }
 
-        public ActionResult About()
+            public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
@@ -52,6 +80,11 @@ namespace DABAB.Controllers
             return View();
         }
 
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -60,7 +93,31 @@ namespace DABAB.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual JsonResult SaveMovieData (string Title, string Desc, Rating Rating, DateTime ReleaseDate, string ImagePath)
+        {
+            bool success;
+
+            var newMovie = new Movie();
+
+            newMovie.Title = Title;
+            newMovie.Description = Desc;
+            newMovie.Rating = Rating;
+            newMovie.ReleaseDate = ReleaseDate;
+            newMovie.ImagePath = ImagePath;
+
+            repository.AddMovie(newMovie);
+            repository.Save();
+
+            success = true;
+
+            return Json(new
+            {
+                success
+            }, JsonRequestBehavior.AllowGet);
+        }
         
+       
         public virtual JsonResult GetMovieDetailsModal(int MovieId)
         {
 

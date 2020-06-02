@@ -40,7 +40,7 @@ namespace DABAB.Controllers
         // GET: MovieActor/Create
         public ActionResult Create()
         {
-            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "Name");
+            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "SurnameName");
             ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title");
             return View();
         }
@@ -59,7 +59,7 @@ namespace DABAB.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "Name", movieActor.ActorId);
+            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "SurnameName", movieActor.ActorId);
             ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", movieActor.MovieId);
             return View(movieActor);
         }
