@@ -43,14 +43,15 @@ namespace DABAB.Controllers
             }
             switch (sort)
             {
-                case "titleDesc":
+                case "nameDesc":
                     list = list.OrderByDescending(x => x.Title).ToList();
                     break;
                 case "date":
                     list = list.OrderBy(x => x.ReleaseDate).ToList();
                     break;
                 case "name":
-                    list = list.OrderBy(x => x.Title).ToList(); break;
+                    list = list.OrderBy(x => x.Title).ToList(); 
+                    break;
                 case "rating":
                     list = list.OrderBy(x => x.Rating).ToList();
                     break;
