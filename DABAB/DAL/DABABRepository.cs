@@ -191,6 +191,43 @@ namespace DABAB.DAL
             throw new NotImplementedException();
         }
 
+        public User GetUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            try
+            {
+                return context.Users.FirstOrDefault(user => user.Email == email);
+            }
+            catch
+            {
+                Exception ex = new Exception();
+                throw ex;
+            }
+        }
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            try
+            {
+                return context.Users.ToList();
+            }
+            catch
+            {
+                Exception ex = new Exception();
+                throw ex;
+            }
+        }
+
+        public void AddUser(User user)
+        {
+            context.Users.Add(user);
+            context.SaveChanges();
+        }
+
 
         #endregion
     }

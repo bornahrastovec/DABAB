@@ -158,4 +158,22 @@ p {
             background-color: #ddd;
         }
 
-    
+#loginDiv {
+    position: relative;
+    margin-top: 15%;
+    width: 500px;
+    height: 250px;
+}
+.form-horizontal {
+    transform: translateY(50%);
+    background-color: lightcoral;
+    width: 500px;
+    height: 250px;
+}
+.form-horizontal input {
+    border-radius: 35px;
+}
+
+.form-horizontal input:focus {
+    border: 0 !important;
+}

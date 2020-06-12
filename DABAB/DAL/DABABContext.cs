@@ -13,6 +13,8 @@ namespace DABAB.DAL
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<User> Users { get; set; }
+
         public DbSet<MovieActor> MovieActors { get; set; }
         public DbSet<MovieGenre> MovieGenres { get; set; }
 
