@@ -165,10 +165,9 @@ p {
     height: 250px;
 }
 .form-horizontal {
-    transform: translateY(50%);
     background-color: lightcoral;
-    width: 500px;
-    height: 250px;
+    width: 520px;
+    margin:20px auto;
 }
 .form-horizontal input {
     border-radius: 35px;

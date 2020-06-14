@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="~/Content/Site.css"/>
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
-        <h4 style="text-align: center; margin-bottom: 50px;"> Prijava </h4>
+        <h3 style="margin-left:40px"> Prijava </h3>
+        <hr/>
 
         @Html.AntiForgeryToken()
 
