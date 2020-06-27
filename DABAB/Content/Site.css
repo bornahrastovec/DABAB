@@ -176,3 +176,37 @@ p {
 .form-horizontal input:focus {
     border: 0 !important;
 }
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.carousel {
+    background: #EEE;
+}
+
+    .carousel img {
+        display: block;
+        height: 200px;
+    }
+
+@media screen and ( min-width: 768px ) {
+    .carousel img {
+        height: 400px;
+    }
+}
+
+.ml2 {
+    font-weight: 900;
+    font-size: 6.5em;
+}
+
+    .ml2 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
