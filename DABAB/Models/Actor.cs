@@ -13,8 +13,12 @@ namespace DABAB.Models
         [Key]
         public int ActorId { get; set; }
         [Display(Name = "Ime")]
+        [Required(ErrorMessage = "Ime je obavezno")]
+        [StringLength(40, MinimumLength = 2, ErrorMessage = "Ime mora biti duljine minimalno 2 a maksimalno 40 znakova")]
         public string Name { get; set; }
         [Display(Name = "Prezime")]
+        [Required(ErrorMessage = "Prezime je obavezno")]
+        [StringLength(40, MinimumLength = 2, ErrorMessage = "Prezime mora biti duljine minimalno 2 a maksimalno 40 znakova")]
         public string Surname { get; set; }
         [Display(Name = "Datum rođenja")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
