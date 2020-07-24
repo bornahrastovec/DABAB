@@ -1,0 +1,17 @@
+﻿@using DABAB.Models;
+@model List<Comment>
+@{
+    ViewBag.Title = "Comments";
+}
+
+<div>
+<h2>Comments:</h2>
+    @foreach(Comment comment in Model)
+    {
+        <div>
+            <p>@comment.Text</p>
+        </div>
+    }
+</div>
+
+

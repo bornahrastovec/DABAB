@@ -1,4 +1,5 @@
-﻿@model DABAB.Models.Movie
+﻿@using DABAB.Models;
+@model Movie
 
 @{
     ViewBag.Title = "Detalji o filmu";
@@ -46,9 +47,20 @@
 </div>
 <br/>
 
+
+
 <button type="button" class="btn btn-info btn-sm waves-effect waves-light">
     <a href="/Home/Index" class="text-white">Povratak na početnu</a>
 </button>
+
+
+@{
+    if ((Session["loggedUser"] as User) != null)
+    {
+        Html.RenderAction("AddComment", "Movie", new { id = Model.MovieId });
+    }
+    Html.RenderAction("Comments", "Movie",new { id = Model.MovieId } );
+}
 
 <script>
     var ratingElem = document.getElementById("rating");

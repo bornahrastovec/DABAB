@@ -191,6 +191,73 @@ namespace DABAB.DAL
             throw new NotImplementedException();
         }
 
+        public User GetUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            try
+            {
+                return context.Users.FirstOrDefault(user => user.Email == email);
+            }
+            catch
+            {
+                Exception ex = new Exception();
+                throw ex;
+            }
+        }
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            try
+            {
+                return context.Users.ToList();
+            }
+            catch
+            {
+                Exception ex = new Exception();
+                throw ex;
+            }
+        }
+
+        public void AddUser(User user)
+        {
+            context.Users.Add(user);
+            context.SaveChanges();
+        }
+
+        public void AddComment(Comment comment)
+        {
+            context.Comments.Add(comment);
+            context.SaveChanges();
+        }
+
+        public IEnumerable<Comment> GetAllCommentsByMovieId(int id)
+        {
+            try
+            {
+                List<Comment> allComments = context.Comments.ToList();
+                List<Comment> result = new List<Comment>();
+
+                foreach(Comment c in allComments)
+                {
+                    if(c.MovieId == id)
+                    {
+                        result.Add(c);
+                    }
+                }
+
+                return result;
+            }
+            catch
+            {
+                Exception ex = new Exception();
+                throw ex;
+            }
+        }
+
 
         #endregion
     }

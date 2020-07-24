@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -16,7 +16,14 @@ namespace DABAB.Controllers
 {
     public class MovieController : Controller
     {
-        private DABABContext db = new DABABContext();
+        private DABABContext db;
+        private IDABABRepository repository;
+
+        public MovieController()
+        {
+            this.db = new DABABContext();
+            this.repository = new DABABRepository(this.db);
+        }
 
         // GET: Movie
         public ActionResult Index(string search, int? page, string sort)
@@ -78,6 +85,39 @@ namespace DABAB.Controllers
             }
             return View(movie);
 
+        }
+
+        [HttpGet]
+        public ActionResult Comments(int id)
+        {
+            List<Comment> comments = new List<Comment>();
+
+            comments = repository.GetAllCommentsByMovieId(id).ToList();
+
+            return PartialView(comments);
+        }
+
+        [HttpGet]
+        public ActionResult AddComment(int id)
+        {
+            Comment comment = new Comment();
+            Session["MovieId"] = id;
+
+            return PartialView(comment);
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(Comment comment)
+        {
+            comment.MovieId = Convert.ToInt32(Session["MovieId"]);
+            
+            if ((Session["loggedUser"] as User) != null)
+            {
+                comment.Username = (Session["loggedUser"] as User).Name + " " + (Session["loggedUser"] as User).Surname;
+                repository.AddComment(comment);
+
+                return RedirectToAction("Details", "Movie", new { id = comment.MovieId });
+            } else return RedirectToAction("Index", "Movie");
         }
 
         [AllowAnonymous]

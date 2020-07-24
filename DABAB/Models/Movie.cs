@@ -38,6 +38,7 @@ namespace DABAB.Models
 
         [Display(Name = "Putanja slike")]
         public string ImagePath { get; set; }
+
         public virtual ICollection<MovieActor> Actors { get; set; }
         public virtual ICollection<MovieGenre> Genres { get; set; }
 
