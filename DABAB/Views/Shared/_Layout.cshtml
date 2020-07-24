@@ -39,10 +39,16 @@
                         <a class="nav-link" href="@Url.Action("Index","Movie", null)">Filmovi</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="@Url.Action("","",null)">Recenzije</a>
+                        <a class="nav-link" style="color:white" href="@Url.Action("","",null)">Recenzije</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="@Url.Action("Index","Actor", null)">Glumci</a>
+                        <a class="nav-link" style="color:white" href="@Url.Action("Index","Actor", null)">Glumci</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" style="color:white" href="@Url.Action("Login","Account", null)">Prijava</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" style="color:white" href="@Url.Action("Register","Account", null)">Registracija</a>
                     </li>
                     <li>
                         <a class="nav-link" href="@Url.Action("Login","Account", null)">Prijava</a>
@@ -54,12 +60,12 @@
                 <div class="navbar navbar-inverse navbar-fixed-bottom  navbar-dark" style="background-color:#C11515;" id="navbarDropdown">
                     <!--#4C4C4C-->
                     <div class="container" id="myContainer">
-
-                        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-                        {
-                            @Html.TextBox("search") <input type="Submit" value="Traži" class="btn btn-sm" />
-                        }
-
+                        <!--
+                            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                            {
+                                @Html.TextBox("search") <input type="Submit" value="Traži" class="btn btn-sm" />
+                            }
+                         -->
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Administrator</a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
@@ -74,28 +80,23 @@
     </header>
     <div class="container body-content" style="background-color: gray">
         @RenderBody()
-        <hr />
-        <footer>
-            <p style="color:white;">&copy; @DateTime.Today.Year- PAUP Projekt</p>
-            <br />
-            <br />
-        </footer>
-        <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark scrolling-navbar" style="background-color:#E65353">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse">
-                <div class="container">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a class="nav-link" href="@Url.Action("Contact","Home", null)">O projektu</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="@Url.Action("FAQ","Home", null)">FAQ</a>
-                        </li>
-                    </ul>
-                </div>
+        <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark" style="background-color:#E65353">
+            <button class="navbar-toggler" type="button"></button>
+            <div class="container">
+                <ul class="nav" style="
+                display: -ms-flexbox;
+                display: flex;
+                padding-left: 5px;
+                margin-bottom: 0;
+                list-style: none;">
+
+                    <li style="padding-right:5px;">
+                        <a class="nav-link" style="color:white" href="@Url.Action("Contact","Home", null)">O projektu</a>
+                    <li />
+                    <li style="padding-right:5px;">
+                        <a class="nav-link" style="color:white" href="@Url.Action("FAQ","Home", null)">FAQ</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
@@ -107,6 +108,7 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/js/mdb.min.js"></script>
     <!-- JQuery -->
+    @RenderSection("scripts", required: false)
 </body>
 </html>
 

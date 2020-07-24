@@ -13,14 +13,58 @@
 <link rel="stylesheet" type="text/css" href="~/Content/LoginRegister.css" />
 
 <h2>Filmovi</h2>
+
+<h1 style="text-align:center;color:gold;font-style:italic;" class="ml2">Top 10 filmova</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script>
+    var textWrapper = document.querySelector('.ml2');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+    anime.timeline({ loop: true })
+        .add({
+            targets: '.ml2 .letter',
+            scale: [4, 1],
+            opacity: [0, 1],
+            translateZ: 0,
+            easing: "easeOutExpo",
+            duration: 950,
+            delay: (el, i) => 70 * i
+        }).add({
+            targets: '.ml2',
+            opacity: 0,
+            duration: 1000,
+            easing: "easeOutExpo",
+            delay: 1000
+        });
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<div class="carousel"
+     data-flickity='{ "imagesLoaded": true, "percentPosition": false , "autoPlay": true  }'>
+    <img src="~/Content/images/Gigli.jpg" width="650" height="500" />
+    <img src="~/Content/images/It.jpg" width="650" height="500" />
+    <img src="~/Content/images/Mulan.jpg" width="650" height="500" />
+    <img src="~/Content/images/Onward.jpg" width="650" height="500" />
+    <img src="~/Content/images/TheNotebook.jpg" width="650" height="500" />
+    <img src="~/Content/images/StarWars.jpg" width="650" height="500" />
+    <img src="~/Content/images/XMen.png" width="650" height="500" />
+    <img src="~/Content/images/Apollo13.jpg" width="650" height="500" />
+    <img src="~/Content/images/TerminatorDarkFate.jpg" width="650" height="500" />
+    <img src="~/Content/images/Baywatch.jpg" width="650" height="500" />
+</div>
+<br />
+<br />
 <table class="table">
     <tr>
         <th>
             @using (Html.BeginForm("Index", "Movie", FormMethod.Get))
             {
-                    @Html.TextBox("search") <input type="Submit" value="Traži" class="btn btn-primary" />
+                @Html.TextBox("search") <input type="Submit" value="Traži" class="btn btn-primary" />
             }
-            </th>
+        </th>
         <th>
             <button type="button" class="btn btn-primary">
                 @Html.ActionLink("Dodaj", "Create", "", new { @class = "text-white" })
@@ -72,7 +116,7 @@
                     <input disabled type="radio" name="star" id="star5"><label for="star5" title="1+">
                     </label>
                 </div>
-                
+
             </td>
             <td>
                 <button type="button" class="btn btn-primary">
@@ -115,6 +159,9 @@
         Kreiraj PDF
     </a>
 </p>
+
+<br />
+<br />
 
 
 <script>

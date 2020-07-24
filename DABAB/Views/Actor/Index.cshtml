@@ -40,7 +40,7 @@
         <th>
             @Html.ActionLink("Prezime", "Index", new { sort = ViewBag.SurnameSort, search = Request.QueryString["search"] })
         </th>
-        <th>
+        <th style="color:#212529;">
             @Html.DisplayNameFor(model => model.First().DateofBirth)
         </th>
         <th></th>
@@ -97,4 +97,7 @@
         Kreiraj PDF
     </a>
 </p>
+
+<br />
+<br />
 

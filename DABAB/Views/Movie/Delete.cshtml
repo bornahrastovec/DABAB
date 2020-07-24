@@ -10,9 +10,9 @@
 
 <h3>Jeste li sigurni da želite obrisati ovaj film?</h3>
 <div>
-    <h4 style="color:white;">Movie</h4>
+    <h4>Movie</h4>
     <hr />
-    <dl class="dl-horizontal" style="color:white;">
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -52,9 +52,9 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-primary" />
+            <input type="submit" value="Obriši" class="btn btn-primary" />
             <div type="button" class="btn btn-primary">
-                @Html.ActionLink("Back to List", "Index", "", new { @class = "text-white" })
+                @Html.ActionLink("Natrag na listu", "Index", "", new { @class = "text-white" })
             </div>
         </div>
     }
