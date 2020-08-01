@@ -4,14 +4,21 @@
     ViewBag.Title = "Comments";
 }
 
-<div>
-<h2>Comments:</h2>
-    @foreach(Comment comment in Model)
+
+<h2>Komentari:</h2>
+<table class="table">
+    <tr>
+        <th>Korisničko ime</th>
+        <th>Komentar</th>
+    </tr>
+    @foreach (Comment comment in Model)
     {
-        <div>
-            <p>@comment.Text</p>
-        </div>
+        <tr>
+            <th>@comment.Username</th>
+            <th>@comment.Text</th>
+        </tr>
     }
-</div>
+</table>
+
 
 

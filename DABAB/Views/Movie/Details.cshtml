@@ -33,11 +33,11 @@
                     </label>
                 </div>
             </div>
-
+            @*
             <div id="CommmentId">
                 <h3>@Model.MovieId</h3>
             </div>
-            @*<h5>
+            <h5>
                     Glumci:
                     @foreach (var actor in Model.Actors)
                     {
@@ -63,8 +63,12 @@
     {
         Html.RenderAction("AddComment", "Movie", new { id = Model.MovieId });
     }
+    <br/>
     Html.RenderAction("Comments", "Movie",new { id = Model.MovieId } );
 }
+
+<br/>
+
 
 <script>
     var ratingElem = document.getElementById("rating");

@@ -5,11 +5,11 @@
     ViewBag.Title = "Add a new comment";
 }
 
-<h2>Add a new comment: </h2>
+<h2>Dodaj novi komentar: </h2>
 <div>
     @using (Html.BeginForm("AddComment", "Movie", FormMethod.Post))
     {
-        @Html.TextAreaFor(m => Model.Text);
+        @Html.TextAreaFor(m => Model.Text, new { @value = "Upiši komentar", cols="300" });
         <br />
         <button class="btn-primary" type="submit">Add comment</button>
     }
