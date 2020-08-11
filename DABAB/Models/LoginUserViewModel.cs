@@ -8,10 +8,11 @@ namespace DABAB.Models
 {
     public class LoginUserViewModel
     {
-        [Required(ErrorMessage = "Please enter an e-mail adress!")]
+        [Required(ErrorMessage = "Molimo unesite adresu!")]
+        [Display(Name = "Elektronička adresa")]
         public string Email { get; set; }
-
-        [Required(ErrorMessage = "Please enter a password!")]
+        [Required(ErrorMessage = "Molimo unesite lozinku!")]
+        [Display(Name = "Lozinka")]
         public string Password { get; set; }
     }
 }

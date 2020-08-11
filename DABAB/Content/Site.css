@@ -210,3 +210,9 @@ body {
         display: inline-block;
         line-height: 1em;
     }
+
+.form-horizontala {
+    background-color: #28bba4;
+    width: 600px;
+    margin: 20px auto;
+}
