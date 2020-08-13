@@ -5,13 +5,47 @@
     ViewBag.Title = "Profile";
 }
 
-<div style="margin-top:15%">
-    <h2>Hello, @Model.Name</h2>
-    <button>Settings</button>
+<link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+
+
+<div style="margin-top:8%">
+    <h2>Dobar dan, @Model.Name</h2>
+    <br />
+    <br />
+
+    <div>Za promjenu korisničkih podataka kliknite gumb:</div>
+    <br />
+    @Html.ActionLink("Promjena podataka", "Settings", "Account", new { id = Model.UserId }, new { @class = "btn btn-info btn-sm" })
 
     <br />
-    <h2>Your movie lists:</h2>
+    <br />
+    <br />
+    <br />
 
-   
+    <table class="table">
+        <tr>
+            <th>
+                Odlazak na početnu
+            </th>
+            <th>
+                Odlazak na listu filmova
+            </th>
+            <th>
+                Odlazak na listu glumaca
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Početna", "Index", "Home",new { }, new { @class = "btn btn-info btn-sm" })
+            </td>
+            <td>
+                @Html.ActionLink("Lista Filmova", "Index", "Movie",new { }, new { @class = "btn btn-info btn-sm" })
+            </td>
+            <td>
+                @Html.ActionLink("Lista glumaca", "Index", "Actor",new { }, new { @class = "btn btn-info btn-sm" })
+            </td>
+        </tr>
+    </table>
+
 </div>
 

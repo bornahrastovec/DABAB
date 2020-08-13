@@ -38,28 +38,39 @@
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index","Movie", null)">Filmovi</a>
                     </li>
-                    <li>
-                        <a class="nav-link" style="color:white" href="@Url.Action("","",null)">Recenzije</a>
-                    </li>
+
                     <li>
                         <a class="nav-link" style="color:white" href="@Url.Action("Index","Actor", null)">Glumci</a>
                     </li>
-                    <li>
-                        <a class="nav-link" style="color:white" href="@Url.Action("Login","Account", null)">Prijava</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" style="color:white" href="@Url.Action("Register","Account", null)">Registracija</a>
-                    </li>
+                    @{
+                        if ((Session["loggedUser"] as User) != null)
+                        {
+                            <li>
+                                <a class="nav-link" style="color:white" href="@Url.Action("Index", "Account", null)">Korisnički račun</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="nav-link" style="color:white" href="@Url.Action("Login", "Account", null)">Prijava</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" style="color:white" href="@Url.Action("Register", "Account", null)">Registracija</a>
+                            </li>
+                        }
+                    }
+
                 </ul>
+                
                 <div class="navbar navbar-inverse navbar-fixed-bottom  navbar-dark" style="background-color:#C11515;" id="navbarDropdown">
                     <!--#4C4C4C-->
                     <div class="container" id="myContainer">
                         <!--
-                            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-                            {
-                                @Html.TextBox("search") <input type="Submit" value="Traži" class="btn btn-sm" />
-                            }
-                         -->
+                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                {
+                    @Html.TextBox("search") <input type="Submit" value="Traži" class="btn btn-sm" />
+                }
+             -->
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Administrator</a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">

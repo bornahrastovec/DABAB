@@ -86,9 +86,6 @@
             @Html.ActionLink("Datum izdavanja", "Index", new { sort = ViewBag.DateSort, search = Request.QueryString["search"] })
 
         </th>
-        <th>
-            @Html.ActionLink("Rating", "Index", new { sort = ViewBag.RatingSort, search = Request.QueryString["search"] })
-        </th>
         <th></th>
     </tr>
 
@@ -100,23 +97,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ReleaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-                <input type="hidden" id="rating" value="@item.Rating" />
-                <div class="rating">
-                    <input disabled type="radio" name="star" id="star1"><label for="star1" title="5+">
-                    </label>
-                    <input disabled type="radio" name="star" id="star2"><label for="star2" title="4+">
-                    </label>
-                    <input disabled type="radio" name="star" id="star3"><label for="star3" title="3+">
-                    </label>
-                    <input disabled type="radio" name="star" id="star4"><label for="star4" title="2+">
-                    </label>
-                    <input disabled type="radio" name="star" id="star5"><label for="star5" title="1+">
-                    </label>
-                </div>
-
             </td>
             <td>
                 <button type="button" class="btn btn-primary">
