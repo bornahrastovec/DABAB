@@ -14,12 +14,12 @@
 <div class="container" id="mainContainer">
     <div class="row">
         <div class="col-md-6" id="movieImage">
-            <img src="~/@Model.ImagePath"style="width: 320px; height: 320px;" />
+            <img src="~/@Model.ImagePath" style="width: 320px; height: 320px;" />
             <input type="hidden" id="rating" value="@Model.Rating" />
         </div>
         <div class="col-md-6" id="movieInfo">
             <h1>@Model.Title | @Model.ReleaseDate.Year.ToString()</h1>
-            <div >
+            <div>
                 <div class="rating">
                     <input disabled type="radio" name="star" id="star1"><label for="star1" title="5+">
                     </label>
@@ -33,23 +33,30 @@
                     </label>
                 </div>
             </div>
-            @*
-            <div id="CommmentId">
-                <h3>@Model.MovieId</h3>
-            </div>
-            <h5>
-                    Glumci:
-                    @foreach (var actor in Model.Actors)
-                    {
-                        actor.Actor.Surname.ToString();
-                    }
-                    <p> Opis: @Model.Description</p>
-                </h5>*@
+
+
             <h5 style="margin-top:5%;">Opis: @Model.Description</h5>
         </div>
     </div>
 </div>
-<br/>
+
+
+@if (Model.Actors.Count > 0)
+{
+<h3>Glumci u filmu:</h3>
+
+<h5>
+    
+   @*
+    @foreach (var actor in Model.Actors)
+	{
+		actor.Actor.Surname.ToString();
+
+	}
+     *@
+</h5>
+}
+<br />
 
 
 
@@ -61,18 +68,18 @@
     {
         Html.RenderAction("AddComment", "Movie", new { id = Model.MovieId });
     }
-    <br/>
-    Html.RenderAction("Comments", "Movie",new { id = Model.MovieId } );
+    <br />
+    Html.RenderAction("Comments", "Movie", new { id = Model.MovieId });
 }
 
-<br/>
+<br />
 
 <button type="button" class="btn btn-info btn-sm waves-effect waves-light">
     <a href="/Home/Index" class="text-white">Povratak na početnu</a>
 </button>
 
-<br/>
-<br/>
+<br />
+<br />
 
 <script>
     var ratingElem = document.getElementById("rating");
