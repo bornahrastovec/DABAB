@@ -312,6 +312,7 @@
     <Compile Include="Models\MovieActor.cs" />
     <Compile Include="Models\MovieComment.cs" />
     <Compile Include="Models\MovieGenre.cs" />
+    <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\RegistrationUserViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="PasswordHasher.cs" />

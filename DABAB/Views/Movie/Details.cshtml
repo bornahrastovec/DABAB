@@ -1,5 +1,5 @@
 ﻿@using DABAB.Models;
-@model Movie
+@model MovieViewModel
 
 @{
     ViewBag.Title = "Detalji o filmu";
@@ -47,13 +47,11 @@
 
 <h5>
     
-   @*
     @foreach (var actor in Model.Actors)
-	{
-		actor.Actor.Surname.ToString();
-
-	}
-     *@
+    {
+        @actor.SurnameName <br />
+    }
+     
 </h5>
 }
 <br />

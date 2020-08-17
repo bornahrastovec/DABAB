@@ -9,7 +9,8 @@ using System.Web.Mvc;
 using DABAB.DAL;
 using DABAB.Models;
 using DABAB.Reports;
-using PagedList;
+  using MySqlX.XDevAPI.Common;
+  using PagedList;
 using PagedList.Mvc;
 
 namespace DABAB.Controllers
@@ -72,21 +73,29 @@ namespace DABAB.Controllers
         }
 
         // GET: Movie/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+
+            var movie = repository.GetMovieById(id);
+
+            List<Actor> actorsInMovie = repository.GetActorsByMovieId(id).ToList();
+
+            var model = new MovieViewModel()
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Movie movie = db.Movies.Find(id);
-            if (movie == null)
-            {
-                return HttpNotFound();
-            }
-            return View(movie);
+                Title = movie.Title,
+                Description = movie.Description,
+                Rating = movie.Rating.ToString(),
+                Actors = actorsInMovie,
+                ReleaseDate = movie.ReleaseDate,
+                ImagePath = movie.ImagePath,
+
+
+
+            };
+
+            return View(model);
 
         }
-
         [HttpGet]
         public ActionResult Comments(int id)
         {
