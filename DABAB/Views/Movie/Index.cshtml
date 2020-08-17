@@ -72,7 +72,7 @@
         </th>
         <th>
             <button type="button" class="btn btn-primary">
-                <div style="color:white;" href="@Url.Action("Index","Actor")">Glumci</div>
+                <a style="color:white;" href="@Url.Action("Index","Actor")">Glumci</a>
             </button>
         </th>
     </tr>
@@ -124,8 +124,8 @@
 
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = Request.QueryString["search"] , sort = Request.QueryString["sort"] }), new PagedListRenderOptions
     {
-                         DisplayLinkToFirstPage = PagedListDisplayMode.Never,
-                         DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                         DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                         DisplayLinkToLastPage = PagedListDisplayMode.Always,
                          DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
                          DisplayLinkToNextPage = PagedListDisplayMode.Always,
                          MaximumPageNumbersToDisplay = 5

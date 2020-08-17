@@ -11,104 +11,104 @@
 <link rel="stylesheet" href="~/Content/Site.css" type="text/css" />
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-<div class="container" id="mainContainer">
-    <div class="row">
-        <div class="col-md-6" id="movieImage">
-            <img src="~/@Model.ImagePath" style="width: 320px; height: 320px;" />
-            <input type="hidden" id="rating" value="@Model.Rating" />
-        </div>
-        <div class="col-md-6" id="movieInfo">
-            <h1>@Model.Title | @Model.ReleaseDate.Year.ToString()</h1>
-            <div>
-                <div class="rating">
-                    <input disabled type="radio" name="star" id="star1"><label for="star1" title="5+">
-                    </label>
-                    <input disabled type="radio" name="star" id="star2"><label for="star2" title="4+">
-                    </label>
-                    <input disabled type="radio" name="star" id="star3"><label for="star3" title="3+">
-                    </label>
-                    <input disabled type="radio" name="star" id="star4"><label for="star4" title="2+">
-                    </label>
-                    <input disabled type="radio" name="star" id="star5"><label for="star5" title="1+">
-                    </label>
+    <div class="container" id="mainContainer">
+        <div class="row">
+            <div class="form-detalji">
+                <div class="col-md-8" id="movieImage">
+                    <img src="~/@Model.ImagePath" style="width: 320px; height: 320px; margin-top:5px auto;" />
+                    <input type="hidden" id="rating" value="@Model.Rating" />
+
+                    @if (Model.Actors.Count > 0)
+                    {
+                        <h2>Glumci:</h2>
+
+                        <h4 style="font-style:italic">
+
+                            @foreach (var actor in Model.Actors)
+                            {
+                                @actor.SurnameName <br />
+                            }
+
+                        </h4>
+                    }                    
                 </div>
             </div>
+                <div class="col-md-6" id="movieInfo">
+                    <h1>@Model.Title | @Model.ReleaseDate.Year.ToString()</h1>
+                    <div>
+                        <div class="rating">
+                            <input disabled type="radio" name="star" id="star1"><label for="star1" title="5+">
+                            </label>
+                            <input disabled type="radio" name="star" id="star2"><label for="star2" title="4+">
+                            </label>
+                            <input disabled type="radio" name="star" id="star3"><label for="star3" title="3+">
+                            </label>
+                            <input disabled type="radio" name="star" id="star4"><label for="star4" title="2+">
+                            </label>
+                            <input disabled type="radio" name="star" id="star5"><label for="star5" title="1+">
+                            </label>
+                        </div>
+                    </div>
 
 
-            <h5 style="margin-top:5%;">Opis: @Model.Description</h5>
+                    <h5 style="margin-top:5%;">Opis: @Model.Description</h5>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
 
-@if (Model.Actors.Count > 0)
-{
-<h3>Glumci u filmu:</h3>
 
-<h5>
-    
-    @foreach (var actor in Model.Actors)
-    {
-        @actor.SurnameName <br />
+
+
+
+    @{
+        if ((Session["loggedUser"] as User) != null)
+        {
+            Html.RenderAction("AddComment", "Movie", new { id = Model.MovieId });
+        }
+        <br />
+        Html.RenderAction("Comments", "Movie", new { id = Model.MovieId });
     }
-     
-</h5>
-}
-<br />
 
-
-
-
-
-
-@{
-    if ((Session["loggedUser"] as User) != null)
-    {
-        Html.RenderAction("AddComment", "Movie", new { id = Model.MovieId });
-    }
     <br />
-    Html.RenderAction("Comments", "Movie", new { id = Model.MovieId });
-}
 
-<br />
+    <button type="button" class="btn btn-info btn-sm waves-effect waves-light">
+        <a href="/Home/Index" class="text-white">Povratak na početnu</a>
+    </button>
 
-<button type="button" class="btn btn-info btn-sm waves-effect waves-light">
-    <a href="/Home/Index" class="text-white">Povratak na početnu</a>
-</button>
+    <br />
+    <br />
 
-<br />
-<br />
+        <script>
+            var ratingElem = document.getElementById("rating");
+            var ratingValue = ratingElem.getAttribute("value");
+            console.log(ratingValue);
 
-<script>
-    var ratingElem = document.getElementById("rating");
-    var ratingValue = ratingElem.getAttribute("value");
-    console.log(ratingValue);
+            function check(starX) {
+                document.getElementById(starX).checked = true;
+            }
 
-    function check(starX) {
-        document.getElementById(starX).checked = true;
-    }
+            switch (ratingValue) {
 
-    switch (ratingValue) {
+                case ("OneStar"):
+                    check("star5")
+                    break;
+                case ("TwoStars"):
+                    check("star4")
+                    break;
 
-        case ("OneStar"):
-            check("star5")
-            break;
-        case ("TwoStars"):
-            check("star4")
-            break;
+                case ("ThreeStars"):
+                    check("star3")
+                    break;
 
-        case ("ThreeStars"):
-            check("star3")
-            break;
+                case ("FourStars"):
+                    check("star2")
+                    break;
 
-        case ("FourStars"):
-            check("star2")
-            break;
+                case ("FiveStars"):
+                    check("star1")
+                    break;
 
-        case ("FiveStars"):
-            check("star1")
-            break;
+            }
 
-    }
-
-</script>
+        </script>
