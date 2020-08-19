@@ -47,7 +47,7 @@ namespace DABAB.Reports
 					t.SetWidths(new float[] { 1, 1, 1, 2 }); // relativni odnos sirina kolona
 
 					//zaglavlja
-					t.AddCell(vratiCeliju("Id glumca", tekst, colorheader, true));
+					t.AddCell(vratiCeliju("Broj glumca", tekst, colorheader, true));
 					t.AddCell(vratiCeliju("Ime", tekst, colorheader, true));
 					t.AddCell(vratiCeliju("Prezime", tekst, colorheader, true));
 					t.AddCell(vratiCeliju("Datum rodenja", tekst, colorheader, true));
