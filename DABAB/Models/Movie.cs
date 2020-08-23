@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace DABAB.Models
 {
     public enum Rating
     {
-        OneStar = 1,
-        TwoStars = 2,
-        ThreeStars = 3,
-        FourStars = 4,
-        FiveStars = 5
+        [Description("Jedna zvijezda")] OneStar = 1,
+        [Description("Dvije zvijezde")] TwoStars = 2,
+        [Description("Tri zvijezde")] ThreeStars = 3,
+        [Description("Četiri zvijezde")] FourStars = 4,
+        [Description("Pet zvijezda")] FiveStars = 5
 
     }
 

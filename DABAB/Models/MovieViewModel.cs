@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace DABAB.Models
 {
+
     public class MovieViewModel
     {
 
@@ -24,12 +26,15 @@ namespace DABAB.Models
         [Display(Name = "Ocjena")]
         [Required]
 
-        public string Rating { get; set; }
+        public Rating MyRating { get; set; }
         [Display(Name = "Datum izlaska")]
         [Required]
 
         public DateTime ReleaseDate { get; set; }
+
+        [Display(Name="Slika")]
         public string ImagePath { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
         public virtual List<Actor> Actors { get; set; }
         public virtual List<Genre> Genres { get; set; }
 

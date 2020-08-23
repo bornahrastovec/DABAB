@@ -14,7 +14,7 @@ app.Dashboard = function () {
 			openModal("movie");
 		},
 		openActorModal: function () {
-			openModal("actor")
+            openModal("actor");
         }
     }
 
@@ -42,14 +42,14 @@ app.Dashboard = function () {
 		actorSurname: ko.observable(),
 		actorDateOfBirth: ko.observable(),
 		openActorModal: function () {
-			openModal("actor")
-		}
+            openModal("actor");
+        }
 	}
 
 
 	var cleanNodes = function () {
 
-		ko.cleanNode(dashboardButtons)
+        ko.cleanNode(dashboardButtons);
 		ko.cleanNode(movieModal);
 		ko.cleanNode(actorModal);
 
@@ -57,7 +57,7 @@ app.Dashboard = function () {
 	// END KO MODELS
 	var Init = function () {
 
-		ko.cleanNode(dashboardButtons)
+        ko.cleanNode(dashboardButtons);
 		ko.cleanNode(movieModal);
 		ko.cleanNode(actorModal);
 
@@ -87,14 +87,14 @@ app.Dashboard = function () {
 	var saveMovieData = function () {
 
 		debugger
-		var data = ko.toJSON({
+		var data = ko.toJS({
 			Title: movieModel.movieTitle,
 			Desc: movieModel.movieDesc,
 			Rating: movieModel.movieRating,
 			ReleaseDate: movieModel.movieReleaseDate,
 			ImagePath: movieModel.movieImagePath,
 		});
-		var url = "/Home/SaveMovieData";
+		var url = "/Movie/SaveMovieData";
 
 		AjaxPost(url, data, saveSuccess, getVerificationToken());
 	}
@@ -108,7 +108,7 @@ app.Dashboard = function () {
 		})
 
 		var url = "/Home/SaveActorData";
-		AjaxPost(url, data, saveSuccess, modalError, getVerificationToken());
+		AjaxPost(url, data, saveSucces, getVerificationToken());
 	}
 
 	var saveSuccess = function (data) {
@@ -123,18 +123,18 @@ app.Dashboard = function () {
 	}
 
 	var getVerificationToken = function () {
-		return $('input[name="__RequestVerificationToken"]').val();
-	}
+        return $('input[name=__RequestVerificationToken]').val();
+    }
 
 
-	var AjaxPost = function (url, data, onSuccess, onError, verificationToken) {
+	var AjaxPost = function (url, data, onSuccess, verificationToken) {
 
 		debugger
 		var headers = {}
 
 		if (verificationToken != null) {
-			headers['__RequestVerificationToken'] = verificationToken
-		}
+            headers['__RequestVerificationToken'] = verificationToken;
+        }
 
 		$.ajax({
 			type: "POST",

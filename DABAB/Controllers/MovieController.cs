@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Linq;
+  using System.IO;
+  using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DABAB.DAL;
+  using System.Web.Script;
+  using DABAB.DAL;
 using DABAB.Models;
 using DABAB.Reports;
   using MySqlX.XDevAPI.Common;
@@ -84,7 +86,7 @@ namespace DABAB.Controllers
             {
                 Title = movie.Title,
                 Description = movie.Description,
-                Rating = movie.Rating.ToString(),
+                MyRating = movie.Rating,
                 Actors = actorsInMovie,
                 ReleaseDate = movie.ReleaseDate,
                 ImagePath = movie.ImagePath,
@@ -144,24 +146,32 @@ namespace DABAB.Controllers
             return View();
         }
 
-        // POST: Movie/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MovieId,Title,Description,Rating,ReleaseDate")] Movie movie)
+        public ActionResult Create(MovieViewModel movie)
         {
-            if (ModelState.IsValid)
-            {
-                db.Movies.Add(movie);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            string fileName = Path.GetFileNameWithoutExtension(movie.ImageFile.FileName);
+            string extension = Path.GetExtension(movie.ImageFile.FileName);
+            fileName = fileName + extension;
+            movie.ImagePath = "~/Content/images" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Content/images/"), fileName);
+            movie.ImageFile.SaveAs(fileName);
+
+
+
+            var newMovie = new Movie();
+
+            newMovie.Title = movie.Title;
+            newMovie.Description = movie.Description;
+            newMovie.Rating = movie.MyRating;
+            newMovie.ReleaseDate = movie.ReleaseDate;
+            newMovie.ImagePath = movie.ImagePath;
+
 
             return View(movie);
         }
 
-        // GET: Movie/Edit/5
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -176,9 +186,6 @@ namespace DABAB.Controllers
             return View(movie);
         }
 
-        // POST: Movie/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MovieId,Title,Description,Rating,ReleaseDate")] Movie movie)
