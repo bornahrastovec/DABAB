@@ -18,6 +18,7 @@ namespace DABAB.Models
 
         [Required(ErrorMessage = "Adresa je potrebna!")]
         [Display(Name = "Elektronička adresa")]
+        [EmailAddress(ErrorMessage = "Elektronička adresa nije u ispravnom obliku!")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Lozinka je potrebna!")]

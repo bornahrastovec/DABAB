@@ -125,6 +125,7 @@ p {
 
 #movieImage {
     position: relative;
+    margin-top:20px;
 }
 
 .pagination li{
@@ -215,4 +216,14 @@ body {
     background-color: #28bba4;
     width: 600px;
     margin: 20px auto;
+}
+
+.form-detalji {
+    background-color: #28bba4;
+    width: 355px;
+    margin: 10px auto;
+    margin-top: 25px;
+    border: 1px solid;
+    position: relative;
+    box-shadow: 15px 15px 3px rgba(0,0,0,.5);
 }

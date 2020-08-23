@@ -47,9 +47,8 @@ namespace DABAB.Reports
 					t.SetWidths(new float[] { 1, 4, 2, 3 }); // relativni odnos sirina kolona
 
 					//zaglavlja
-					t.AddCell(vratiCeliju("Id Filma", tekst, colorheader, true));
+					t.AddCell(vratiCeliju("Broj Filma", tekst, colorheader, true));
 					t.AddCell(vratiCeliju("Naslov", tekst, colorheader, true));
-					t.AddCell(vratiCeliju("Rating", tekst, colorheader, true));
 					t.AddCell(vratiCeliju("Datum izdavanja", tekst, colorheader, true));
 
 
@@ -57,7 +56,6 @@ namespace DABAB.Reports
 					{
 						t.AddCell(vratiCeliju(m.MovieId.ToString(), tekst, BaseColor.WHITE, false));
 						t.AddCell(vratiCeliju(m.Title, tekst, BaseColor.WHITE, false));
-						t.AddCell(vratiCeliju(m.Rating.ToString(), tekst, BaseColor.WHITE, false));
 						string datum = m.ReleaseDate.ToString("dd.MM.yyyy");
 						t.AddCell(vratiCeliju(datum, tekst, BaseColor.WHITE, false));
 
