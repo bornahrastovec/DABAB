@@ -26,9 +26,12 @@ namespace DABAB.Models
         public int MovieId { get; set; }
 
         [Display(Name = "Naslov")]
+        [Required(ErrorMessage = "Naslov je obavezan")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Naslov mora biti duljine minimalno 2 a maksimalno 50 znakova")]
         public string Title { get; set; }
 
         [Display(Name = "Opis")]
+        [Required(ErrorMessage = "Opis je obavezan")]
         public string Description { get; set; }
 
         public Rating Rating { get; set; }
